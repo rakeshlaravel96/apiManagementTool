@@ -142,6 +142,10 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM" defer></script>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM" defer></script>
 <script src="{{asset('backend/assets/plugins/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('backend/assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('backend/assets/plugins/toaster/toastr.min.js')}}"></script>
@@ -161,10 +165,6 @@
 <script src="{{asset('backend/assets/js/date-range.js')}}"></script>
 <script src="{{asset('backend/assets/js/map.js')}}"></script>
 <script src="{{asset('backend/assets/js/custom.js')}}"></script>
-
-
-
-
 
 
 

@@ -28,6 +28,52 @@
                         data-parent="#sidebar-menu">
                         <div class="sub-menu">
 
+
+                          <li  class="has-sub" >
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pageetai"
+                              aria-expanded="false" aria-controls="pageetai">
+                              <span class="nav-text">User List</span> <b class="caret"></b>
+                            </a>
+                            <ul  class="collapse"  id="pageetai">
+                              <div class="sub-menu">
+
+                                <li >
+                                  <a href="{{route('userList')}}">Index</a>
+                                </li>
+                                <li >
+                                  <a href="{{route('usercreate')}}">Create</a>
+                                </li>
+                              
+
+{{-- //end --}}
+
+                              </div>
+                            </ul>
+                          </li>
+
+                          <li  class="has-sub" >
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pa"
+                              aria-expanded="false" aria-controls="pa">
+                              <span class="nav-text">Role & Permission</span> <b class="caret"></b>
+                            </a>
+                            <ul  class="collapse"  id="pa">
+                              <div class="sub-menu">
+
+                                <li >
+                                  <a href="{{route('role.index')}}">Index</a>
+                                </li>
+                                <li >
+                                  <a href="{{route('role.create')}}">Create</a>
+                                </li>
+                              
+
+{{-- //end --}}
+
+                              </div>
+                            </ul>
+                          </li>
+
+
 {{-- //start --}}
                           <li  class="has-sub" >
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pagedetail"

@@ -24,10 +24,14 @@ class Api extends Model
         'errorresponse',
         'failresponse',
         'developedby',
-        'optional'
-
+        'optional',
+        'updatedby'
 
     ];
+
+    public function apirecords(){
+        return $this->hasMany(Apirecord::class);
+    }
 
 
     public function module(){

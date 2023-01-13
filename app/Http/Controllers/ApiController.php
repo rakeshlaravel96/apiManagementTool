@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Api;
+use App\Models\Apirecord;
 use App\Models\Error;
 use App\Models\Header;
 use App\Models\Hosting;
@@ -11,6 +12,7 @@ use App\Models\Parameter;
 use App\Models\Submodule;
 use App\Models\Success;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
 {
@@ -52,8 +54,16 @@ class ApiController extends Controller
             'module_id' => 'required',
             'submodule_id'=> 'required',
             'hosting_id'=> 'required',
-            'name'=>'required|'
-
+            'name'=>'required',
+            'endpoint'=> 'required',
+           'method'=> 'required',
+           'responseformat'=>'required',
+           'apipurpose'=>'required',
+           'casevalidation'=>'required',
+           'successresponse'=>'required',
+           'errorresponse'=>'required',
+           'failresponse'=>'required',
+           'developedby'=>'required',
 
         ]);
 
@@ -167,12 +177,6 @@ class ApiController extends Controller
 
         return redirect()->route('api.index')->with('success', 'Api Created Successfully');
 
-  
-
-
-   
-      
-
 
     }
 
@@ -208,7 +212,83 @@ class ApiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Api $api)
-    {
+    {       
+        $request->validate([
+            'module_id' => 'required',
+            'submodule_id'=> 'required',
+            'hosting_id'=> 'required',
+            'name'=>'required',
+            'endpoint'=> 'required',
+           'method'=> 'required',
+           'responseformat'=>'required',
+           'apipurpose'=>'required',
+           'casevalidation'=>'required',
+           'successresponse'=>'required',
+           'errorresponse'=>'required',
+           'failresponse'=>'required',
+           'developedby'=>'required',
+
+        ]);
+
+
+        $headerfield = Header::where('api_id', $api->id)->pluck('field');
+        $headertype = Header::where('api_id', $api->id)->pluck('type');
+        $headerdescription = Header::where('api_id', $api->id)->pluck('description');
+        $parameterfield = Parameter::where('api_id', $api->id)->pluck('field');
+        $parametertype = Parameter::where('api_id', $api->id)->pluck('type');
+        $parameterdescription = Parameter::where('api_id', $api->id)->pluck('description');
+        $successfield = Success::where('api_id', $api->id)->pluck('field');
+        $successtype = Success::where('api_id', $api->id)->pluck('type');
+        $successdescription = Success::where('api_id', $api->id)->pluck('description');
+        $errorfield = Error::where('api_id', $api->id)->pluck('field');
+        $errortype = Error::where('api_id', $api->id)->pluck('type');
+        $errordescription = Error::where('api_id', $api->id)->pluck('description');
+
+
+       
+
+        $recorddata = [
+            'module' => $api->module->name,
+            'submodule' => $api->submodule->name,
+            'hosting' => $api->hosting->name,
+
+            'name' => $api->name,
+            'endpoint' => $api->endpoint,
+            'method' => $api->method,
+            'responseformat' => $api->responseformat,
+
+            'apiresponse' => $api->apiresponse,
+            'apipurpose' => $api->apipurpose,
+            'casevalidation' => $api->casevalidation,
+            'successresponse' => $api->successresponse,
+            'errorresponse' => $api->errorresponse,
+            'failresponse' => $api->failresponse,
+            'developedby' => $api->developedby,
+            'optional' => $api->optional,
+            'updatedby' => $api->updatedby,
+            'hfield'=>json_decode($headerfield) ,
+            'htype'=> json_decode($headertype),
+            'hdescription'=> json_decode($headerdescription),
+            'pfield'=> json_decode($parameterfield),
+            'ptype'=> json_decode($parametertype),
+            'pdescription'=> json_decode($parameterdescription),
+            'sfield'=> json_decode($successfield),
+            'stype'=> json_decode($successtype),
+            'sdescription'=> json_decode($successdescription),
+            'efield'=> json_decode($errorfield),
+            'etype'=> json_decode($errortype),
+            'edescription'=> json_decode($errordescription),
+            'api_id' => $api->id,
+            'updatedby' =>$api->updatedby,
+            
+        ];
+
+     
+
+
+        Apirecord::create($recorddata);
+
+
         $data = [
             'module_id' => $request->module_id,
             'submodule_id' => $request->submodule_id,
@@ -227,6 +307,7 @@ class ApiController extends Controller
             'failresponse' => $request->failresponse,
             'developedby' => $request->developedby,
             'optional' => $request->optional,
+            'updatedby' => Auth::user()->name,
 
         ];
 
@@ -243,8 +324,8 @@ class ApiController extends Controller
             $parameter->delete();
         }
         foreach ($api->successs as $item) {
-            $success = Success::find($item->id);
-            $success->delete();
+            $successs = Success::find($item->id);
+            $successs->delete();
         }
         foreach ($api->errors as $item) {
             $error = Error::find($item->id);
