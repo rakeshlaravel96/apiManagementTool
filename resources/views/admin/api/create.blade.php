@@ -159,21 +159,21 @@
         <div class=" w-100 d-flex align-items-start gap-5 justify-content-between inp-group pt-1">
             <div class="form-group w-100">
                 <label class="">field</label>
-                <input type="text" class="form-control"  name="hfield[]"  value="">
+                <input type="text" class="form-control"  name="hfield[]"  value=""  placeholder="Enter field">
             </div>
             <div class="form-group w-100">
                 <label class="">Type</label>
              
-                <input type="text" class="form-control"  name="htype[]"  value="">
+                <input type="text" class="form-control"  name="htype[]"  value="" placeholder="Enter type">
             </div>
             <div class="form-group w-100">
                 <label class="">Description</label>
                 
-                <input type="text" class="form-control"  name="hdescription[]"  value="">
+                <input type="text" class="form-control"  name="hdescription[]"  value="" placeholder="Enter description">
             </div>
             <div class="form-group d-flex flex-column ">
                 <label class="">Action</label>
-                <a href="#" class="btn btn-success btn-sm hadd"><i class="fas fa-pen"></i>&plus;</a> 
+                <button type="button" class="btn btn-success btn-sm hadd"><i class="fas fa-pen"></i>&plus;</a> 
             </div>
 
         </div>
@@ -191,21 +191,21 @@
         <div class=" w-100 d-flex align-items-start gap-5 justify-content-between inp-group-parameter pt-1">
             <div class="form-group w-100">
                 <label class="">field</label>
-                <input type="text" class="form-control"  name="pfield[]"  value="">
+                <input type="text" class="form-control"  name="pfield[]"  value="" placeholder="Enter field">
             </div>
             <div class="form-group w-100">
                 <label class="">Type</label>
              
-                <input type="text" class="form-control"  name="ptype[]"  value="">
+                <input type="text" class="form-control"  name="ptype[]"  value="" placeholder="Enter type">
             </div>
             <div class="form-group w-100">
                 <label class="">Description</label>
                 
-                <input type="text" class="form-control"  name="pdescription[]"  value="">
+                <input type="text" class="form-control"  name="pdescription[]"  value="" placeholder="Enter description">
             </div>
             <div class="form-group d-flex flex-column ">
                 <label class="">Action</label>
-                <a href="#" class="btn btn-success btn-sm padd"><i class="fas fa-pen"></i>&plus;</a> 
+                <button type="button" class="btn btn-success btn-sm padd"><i class="fas fa-pen"></i>&plus;</button> 
             </div>
 
         </div>
@@ -223,21 +223,21 @@
         <div class=" w-100 d-flex align-items-start gap-5 justify-content-between inp-group-parameter pt-1">
             <div class="form-group w-100">
                 <label class="">field</label>
-                <input type="text" class="form-control"  name="sfield[]"  value="">
+                <input type="text" class="form-control"  name="sfield[]"  value="" placeholder="Enter field">
             </div>
             <div class="form-group w-100">
                 <label class="">Type</label>
              
-                <input type="text" class="form-control"  name="stype[]"  value="">
+                <input type="text" class="form-control"  name="stype[]"  value="" placeholder="Enter type">
             </div>
             <div class="form-group w-100">
                 <label class="">Description</label>
                 
-                <input type="text" class="form-control"  name="sdescription[]"  value="">
+                <input type="text" class="form-control"  name="sdescription[]"  value="" placeholder="Enter description">
             </div>
             <div class="form-group d-flex flex-column ">
                 <label class="">Action</label>
-                <a href="#" class="btn btn-success btn-sm sadd"><i class="fas fa-pen"></i>&plus;</a> 
+                <button type="button" class="btn btn-success btn-sm sadd"><i class="fas fa-pen"></i>&plus;</button> 
             </div>
 
         </div>
@@ -254,21 +254,21 @@
         <div class=" w-100 d-flex align-items-start gap-5 justify-content-between inp-group-parameter pt-1">
             <div class="form-group w-100">
                 <label class="">field</label>
-                <input type="text" class="form-control"  name="efield[]"  value="">
+                <input type="text" class="form-control"  name="efield[]"  value="" placeholder="Enter field">
             </div>
             <div class="form-group w-100">
                 <label class="">Type</label>
              
-                <input type="text" class="form-control"  name="etype[]"  value="">
+                <input type="text" class="form-control"  name="etype[]"  value="" placeholder="Enter type">
             </div>
             <div class="form-group w-100">
                 <label class="">Description</label>
                 
-                <input type="text" class="form-control"  name="edescription[]"  value="">
+                <input type="text" class="form-control"  name="edescription[]"  value="" placeholder="Enter description">
             </div>
             <div class="form-group d-flex flex-column ">
                 <label class="">Action</label>
-                <a href="#" class="btn btn-success btn-sm eadd"><i class="fas fa-pen"></i>&plus;</a> 
+                <button type="button" class="btn btn-success btn-sm eadd"><i class="fas fa-pen"></i>&plus;</button> 
             </div>
 
         </div>
@@ -398,6 +398,11 @@
 
  <script src="https://cdn.ckeditor.com/4.14.1/standard-all/ckeditor.js"></script>
  <script>
+
+   
+
+
+
     const ckboxes = document.querySelectorAll('.ckeditor');
     ckboxes.forEach(box => {
         let id = box.getAttribute('id');
@@ -488,7 +493,7 @@ function addInputParameter() {
       const pbtn = document.createElement("a");
     pbtn.className = "delete";
     pbtn.innerHTML = "-";
-    pbtn.className = "btn btn-danger btn-sm px-3";
+    pbtn.className = "btn btn-danger btn-sm px-3 text-white";
     pbtn.addEventListener('click', removeInputParameter);
 
     const pflex = document.createElement('div');
@@ -537,7 +542,7 @@ function addInputError() {
       const ebtn = document.createElement("a");
     ebtn.className = "delete";
     ebtn.innerHTML = "-";
-    ebtn.className = "btn btn-danger btn-sm px-3";
+    ebtn.className = "btn btn-danger btn-sm px-3 text-white";
     ebtn.addEventListener('click', removeInputError);
 
     const eflex = document.createElement('div');
@@ -588,8 +593,8 @@ function addInputSuccess() {
 
       const sbtn = document.createElement("a");
     sbtn.className = "delete";
-    sbtn.innerHTML = "delete";
-    sbtn.className = "btn btn-danger btn-sm";
+    sbtn.innerHTML = "-";
+    sbtn.className = "btn btn-danger btn-sm text-white px-3";
     sbtn.addEventListener('click', removeInputSuccess);
 
     const sflex = document.createElement('div');

@@ -1,0 +1,311 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(202, 202, 202);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+.contain {
+  display: flex;
+  width: 100%;
+}
+.contain .main {
+  width: calc(100% - 30rem);
+  margin-left: 30rem;
+  padding: 2rem 3rem;
+}
+.contain .main .basic-info .title h1 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.contain .main .basic-info .title h4 {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.contain .main .intro {
+  width: 100%;
+  border-bottom: 1px solid rgba(95, 99, 104, 0.0823529412);
+  margin-top: 5rem;
+  padding-bottom: 1rem;
+}
+.contain .main .intro h4 {
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+.contain .main .intro p {
+  font-weight: 400;
+  font-size: 15px;
+  color: #5f6368;
+}
+.contain .main .basic-in {
+  width: 100%;
+  border-bottom: 1px solid rgba(95, 99, 104, 0.0823529412);
+  margin-top: 5rem;
+  padding-bottom: 1rem;
+}
+.contain .main .basic-in h4 {
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+.contain .main .basic-in p {
+  font-weight: 400;
+  font-size: 15px;
+  color: #5f6368;
+}
+.contain .main .custom {
+  width: 100%;
+  border-bottom: 1px solid rgba(95, 99, 104, 0.0823529412);
+  margin-top: 5rem;
+  padding-bottom: 5rem;
+}
+.contain .main .custom h4 {
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+.contain .main .custom p {
+  font-weight: 400;
+  font-size: 15px;
+  color: #5f6368;
+}
+.contain .main .api-detail {
+  margin-top: 3rem;
+}
+.contain .main .api-detail .api-detailed {
+  display: flex;
+  padding: 2rem 0;
+  position: relative;
+}
+.contain .main .api-detail .api-detailed.post-api {
+  background: rgba(73, 204, 144, 0.1);
+  border: 1px dotted #49cc90;
+  border-radius: 6px;
+}
+.contain .main .api-detail .api-detailed .api-left {
+  width: calc(100% - 40rem);
+}
+.contain .main .api-detail .api-detailed .api-left .title {
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+.contain .main .api-detail .api-detailed .api-left .api-type {
+  margin: 0.5rem;
+  width: 100%;
+  background: rgba(73, 204, 144, 0.1);
+  border: 1px dotted #49cc90;
+  border-radius: 6px;
+  padding: 0.6rem;
+  display: flex;
+  gap: 1rem;
+}
+.contain .main .api-detail .api-detailed .api-left .api-type .btn {
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 60px;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  color: #fff;
+  margin-left: 1rem;
+}
+.contain .main .api-detail .api-detailed .api-left .api-type .btn.post {
+  background: #49cc90;
+}
+.contain .main .api-detail .api-detailed .api-left .api-type .hosting {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(59, 65, 81);
+}
+.contain .main .api-detail .api-detailed .api-left .header {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.contain .main .api-detail .api-detailed .api-left .header .title-json {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.contain .main .api-detail .api-detailed .api-left .header .title-json .title {
+  background-color: #fff;
+  padding: 0.3rem 0.8rem;
+}
+.contain .main .api-detail .api-detailed .api-left .header .title-json h6 {
+  padding: 1px 5px;
+  font-size: 12px;
+  background-color: #fff;
+  line-height: 1.5;
+}
+.contain .main .api-detail .api-detailed .api-left .header table {
+  margin: 0 2rem;
+}
+.contain .main .api-detail .api-detailed .api-left .header table thead {
+  border-bottom: 1px solid #ddd;
+}
+.contain .main .api-detail .api-detailed .api-left .header table thead th {
+  padding-bottom: 1rem;
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+}
+.contain .main .api-detail .api-detailed .api-left .header table tbody {
+  padding-top: 1rem;
+}
+.contain .main .api-detail .api-detailed .api-left .header table tbody td {
+  padding: 1rem 0;
+  font-size: 14px;
+  font-style: normal;
+}
+.contain .main .api-detail .api-detailed .api-left .header table tbody .code {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+}
+.contain .main .api-detail .api-detailed .api-right {
+  width: 40rem;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: #282a36;
+  border-radius: 0px 5px 5px 0px;
+}
+.contain .main .api-detail .api-detailed .api-right h3 {
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+  background-color: #282A36;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+.contain .main .api-detail .api-detailed .api-right .result {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 2rem;
+  border-radius: 0px;
+  position: relative;
+  margin: 10px 0 20px 0;
+  background: #000;
+  color: #50fa7b;
+}
+
+.side-bar {
+  width: 30rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding-top: 2.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.side-bar .logo-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.side-bar .logo-title .logo-container {
+  height: 6rem;
+  width: 6rem;
+}
+.side-bar .logo-title .logo-container img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.side-bar .logo-title h3 {
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+}
+.side-bar .logo-title p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+.side-bar .detail {
+  padding: 0 2rem;
+  padding-top: 3rem;
+  width: 100%;
+  height: calc(100vh - 15rem);
+  overflow-y: scroll;
+}
+.side-bar .detail .module-list {
+  padding-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+}
+.side-bar .detail .module-list a {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  color: rgb(59, 65, 81);
+}
+.side-bar .detail .module-list .api-list {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 1rem;
+}
+.side-bar .detail .module-list .api-list .api a {
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+.side-bar .detail .module-list .api-list .api a span {
+  font-weight: 600;
+  margin-right: 1rem;
+  width: 3rem;
+}
+.side-bar .detail .module-list .api-list .api a .post {
+  color: #49cc90;
+}
+.side-bar .detail .module-list .api-list .api a .delete {
+  color: #f93e3e;
+}
+.side-bar .detail .module-list .api-list .api a .get {
+  color: #61affe;
+}
+.side-bar .detail .module-list .api-list .api a .put {
+  color: #fca130;
+}/*# sourceMappingURL=main.css.map */

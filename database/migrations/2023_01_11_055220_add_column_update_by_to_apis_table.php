@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('mobile')->nullable();
-            $table->string('designation')->nullable();
-            $table->string('role_id')->nullable();
+        Schema::table('apis', function (Blueprint $table) {
+            $table->string('updatedby')->nullable();
+         
         });
     }
 
@@ -27,8 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['mobile', 'designation', 'role_id']);
+        Schema::table('apis', function (Blueprint $table) {
+            $table->dropColumn(['updatedby']);
         });
     }
 };

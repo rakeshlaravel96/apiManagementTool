@@ -7,10 +7,10 @@
       <div class="card mb-4">
         <div class="card-header py-3">
          <div class="d-flex justify-content-between align-items-center" >
-            <h5 class="text-primary">API</h5>
+            <h5 class="text-primary" >User List</h5>
           
            <div>
-            <a href="{{route('api.create')}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Add Api </a> 
+            <a href="{{route('usercreate')}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Add user list </a> 
         </div>
        
         </div>
@@ -21,46 +21,39 @@
               <tr>
                 <th>Sr.No.</th>
                 <th> Name</th>
-                <th>End Point</th>
-                <th>Developed by</th>
+                <th> Email</th>
+                <th> Role</th>
+                <th> Designation</th>
+                <th>Action</th>
               
-                 <th>Action</th>
             
               </tr>
             </thead>
             <tbody id="myTable">
-                @forelse ($apis as $key=>$item)
+                @forelse ($users as $key=>$item)
                 <tr>
                     <td>{{$key + 1}}</td>
                     <td>
                    {{$item->name}}
                     </td>
                     <td>
-                        {{$item->endpoint}}
-                     </td>
-     
-
+                        {{$item->email}}
+                    </td>
                     <td>
-                        {{$item->developedby}}
-                         </td>
-
-
-                       
-                       
-                    
+                            {{$item->role->name}}
+                      </td>
+                     <td>
+                        {{$item->designation}}
+                   </td>
+                  
                     <td>
-                      <a href="{{route('api.show', $item->id)}}" class="btn btn-success btn-icon-split btn-sm">
-                        <span class="icon text-white-50">
-                           <i class="fas fa-pen"></i>
-                        </span>
-                        <span class="text">view</span>
-                      </a>
-                      <a href="{{route('api.edit', $item->id)}}" class="btn btn-primary btn-icon-split btn-sm">
-                        <span class="icon text-white-50">
-                           <i class="fas fa-pen"></i>
-                        </span>
-                        <span class="text">Edit</span>
-                      </a>
+                        <a href="{{route('userEdit', $item->id)}}" class="btn btn-primary btn-icon-split btn-sm">
+                            <span class="icon text-white-50">
+                               <i class="fas fa-pen"></i>
+                            </span>
+                            <span class="text">Edit</span>
+                          </a>
+                      
                    
                      <button type="button" data-toggle="modal" data-target="#delted-modal">
 
@@ -78,7 +71,7 @@
                        </div> --}}
                        <div class="modal-footer">
                          <button type="button"  data-dismiss="modal"> <span class="btn btn-dark btn-sm"> Close</span></button>
-                         <form action="{{route('api.destroy', $item->id)}}" method="post">
+                         <form action="" method="post">
                            @csrf
                            @method('DELETE')
                            <button type="submit">

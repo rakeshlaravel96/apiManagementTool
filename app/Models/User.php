@@ -22,10 +22,16 @@ class User extends Authenticatable
         'email',
         'password',
         'mobile',
-        'role',
-        'desgination'
+        'role_id',
+        'designation'
       
     ];
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+
 
     /**
      * The attributes that should be hidden for serialization.
