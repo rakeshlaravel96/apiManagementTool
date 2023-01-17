@@ -56,7 +56,11 @@
             </div>
             <div class="col-md-8">
                 <div class="form-group">
+                    @if ($api->submodule)
                     {{$api->submodule->name}}
+                    @else
+                    -
+                    @endif
                 </div>
             </div>
         
@@ -138,17 +142,21 @@
                 </tr>
               </thead>
               <tbody id="myTable">
-                  @foreach ($api->headers as $key=>$item)
+                 
+
+                  @foreach ($api->header as $key=>$item)
                   <tr>
+
+                   
                       <td>{{$key + 1}}</td>
                       <td>
-                     {{$item->field}}
+                     {{$item['field']}}
                       </td>
                       <td>
-                        {{$item->type}}
+                        {{$item['type']}}
                          </td>
                          <td>
-                            {{$item->description}}
+                            {{$item['description']}}
                      </td>
                      
                    </tr>
@@ -177,18 +185,18 @@
                 </tr>
               </thead>
               <tbody id="myTable">
-                  @foreach ($api->parameters as $key=>$item)
+                  @foreach ($api->parameter as $key=>$item)
                   <tr>
                       <td>{{$key + 1}}</td>
                       <td>
-                     {{$item->field}}
-                      </td>
-                      <td>
-                        {{$item->type}}
+                        {{$item['field']}}
                          </td>
                          <td>
-                            {{$item->description}}
-                     </td>
+                           {{$item['type']}}
+                            </td>
+                            <td>
+                               {{$item['description']}}
+                        </td>
                      
                    </tr>
                    @endforeach
@@ -278,18 +286,18 @@
                 </tr>
               </thead>
               <tbody id="myTable">
-                  @foreach ($api->successs as $key=>$item)
+                  @foreach ($api->success as $key=>$item)
                   <tr>
                       <td>{{$key + 1}}</td>
                       <td>
-                     {{$item->field}}
-                      </td>
-                      <td>
-                        {{$item->type}}
+                        {{$item['field']}}
                          </td>
                          <td>
-                            {{$item->description}}
-                     </td>
+                           {{$item['type']}}
+                            </td>
+                            <td>
+                               {{$item['description']}}
+                        </td>
                      
                    </tr>
                    @endforeach
@@ -329,18 +337,18 @@
                   </tr>
                 </thead>
                 <tbody id="myTable">
-                    @foreach ($api->errors as $key=>$item)
+                    @foreach ($api->error as $key=>$item)
                     <tr>
                         <td>{{$key + 1}}</td>
                         <td>
-                       {{$item->field}}
-                        </td>
-                        <td>
-                          {{$item->type}}
-                           </td>
-                           <td>
-                              {{$item->description}}
-                       </td>
+                            {{$item['field']}}
+                             </td>
+                             <td>
+                               {{$item['type']}}
+                                </td>
+                                <td>
+                                   {{$item['description']}}
+                            </td>
                        
                      </tr>
                      @endforeach
@@ -395,7 +403,12 @@
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
+                        @if ($api->optional)
                         {!!$api->optional!!}
+                        @else
+                        -
+                        @endif
+                        
                     </div>
                 </div>
             

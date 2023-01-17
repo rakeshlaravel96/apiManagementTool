@@ -96,12 +96,28 @@ body {
 }
 .contain .main .api-detail .api-detailed {
   display: flex;
+  margin-bottom: 3rem;
   padding: 2rem 0;
   position: relative;
 }
 .contain .main .api-detail .api-detailed.post-api {
   background: rgba(73, 204, 144, 0.1);
   border: 1px dotted #49cc90;
+  border-radius: 6px;
+}
+.contain .main .api-detail .api-detailed.delete-api {
+  background: rgba(249, 62, 62, 0.1);
+  border: 1px dotted #f93e3e;
+  border-radius: 6px;
+}
+.contain .main .api-detail .api-detailed.get-api {
+  background: rgba(97, 175, 254, 0.1);
+  border: 1px dotted #61affe;
+  border-radius: 6px;
+}
+.contain .main .api-detail .api-detailed.put-api {
+  background: rgba(252, 161, 48, 0.1);
+  border: 1px dotted #fca130;
   border-radius: 6px;
 }
 .contain .main .api-detail .api-detailed .api-left {
@@ -114,12 +130,30 @@ body {
 .contain .main .api-detail .api-detailed .api-left .api-type {
   margin: 0.5rem;
   width: 100%;
-  background: rgba(73, 204, 144, 0.1);
-  border: 1px dotted #49cc90;
   border-radius: 6px;
   padding: 0.6rem;
   display: flex;
   gap: 1rem;
+}
+.contain .main .api-detail .api-detailed .api-left .api-type.post-api {
+  background: rgba(73, 204, 144, 0.1);
+  border: 1px dotted #49cc90;
+  border-radius: 6px;
+}
+.contain .main .api-detail .api-detailed .api-left .api-type.delete-api {
+  background: rgba(249, 62, 62, 0.1);
+  border: 1px dotted #f93e3e;
+  border-radius: 6px;
+}
+.contain .main .api-detail .api-detailed .api-left .api-type.get-api {
+  background: rgba(97, 175, 254, 0.1);
+  border: 1px dotted #61affe;
+  border-radius: 6px;
+}
+.contain .main .api-detail .api-detailed .api-left .api-type.put-api {
+  background: rgba(252, 161, 48, 0.1);
+  border: 1px dotted #fca130;
+  border-radius: 6px;
 }
 .contain .main .api-detail .api-detailed .api-left .api-type .btn {
   font-size: 11px;
@@ -132,9 +166,19 @@ body {
   font-family: sans-serif;
   color: #fff;
   margin-left: 1rem;
+  text-transform: uppercase;
 }
-.contain .main .api-detail .api-detailed .api-left .api-type .btn.post {
+.contain .main .api-detail .api-detailed .api-left .api-type .btn.post-api {
   background: #49cc90;
+}
+.contain .main .api-detail .api-detailed .api-left .api-type .btn.delete-api {
+  background: #f93e3e;
+}
+.contain .main .api-detail .api-detailed .api-left .api-type .btn.get-api {
+  background: #61affe;
+}
+.contain .main .api-detail .api-detailed .api-left .api-type .btn.put-api {
+  background: #fca130;
 }
 .contain .main .api-detail .api-detailed .api-left .api-type .hosting {
   font-size: 15px;
@@ -296,6 +340,7 @@ body {
   font-weight: 600;
   margin-right: 1rem;
   width: 3rem;
+  text-transform: uppercase;
 }
 .side-bar .detail .module-list .api-list .api a .post {
   color: #49cc90;

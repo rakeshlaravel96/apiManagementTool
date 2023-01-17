@@ -73,9 +73,7 @@
                          <h5 class="modal-title" id="delted-modal-Label-{{$key + 1}}"> Are you Sure Want to Delete</h5>
 
                        </div>
-                       {{-- <div class="modal-body">
-                           Are you Sure Want to Delete <br>
-                       </div> --}}
+                       
                        <div class="modal-footer">
                          <button type="button"  data-dismiss="modal"> <span class="btn btn-dark btn-sm"> Close</span></button>
                          <form action="{{route('api.destroy', $item->id)}}" method="post">

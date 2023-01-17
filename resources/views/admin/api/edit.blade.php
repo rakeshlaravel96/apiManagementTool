@@ -178,20 +178,20 @@
 
 
         </div>
-        @foreach ($api->headers as $key=>$item)
+        @foreach ($api->header as $key=>$item)
         @if ($key === 0)
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
-            <input type="text" name="hfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item->field}}">
-            <input type="text" placeholder="Enter Type" name="htype[]" class="form-control w-100" value="{{$item->type}}">
-            <input type="text" placeholder="Enter Description" name="hdescription[]" class="form-control w-100" value="{{$item->description}}">
+            <input type="text" name="hfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <input type="text" placeholder="Enter Type" name="htype[]" class="form-control w-100" value="{{$item['type']}}">
+            <input type="text" placeholder="Enter Description" name="hdescription[]" class="form-control w-100" value="{{$item['description']}}">
             <button type="button" class="btn btn-success btn-sm hadd px-3"><i class="fas fa-pen"></i>&plus;</button> 
         </div>
             
         @else
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
-            <input type="text" name="hfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item->field}}">
-            <input type="text" placeholder="Enter Type" name="htype[]" class="form-control w-100" value="{{$item->type}}">
-            <input type="text" placeholder="Enter Description" name="hdescription[]" class="form-control w-100" value="{{$item->description}}">
+            <input type="text" name="hfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <input type="text" placeholder="Enter Type" name="htype[]" class="form-control w-100" value="{{$item['type']}}">
+            <input type="text" placeholder="Enter Description" name="hdescription[]" class="form-control w-100" value="{{$item['description']}}">
             <a class="btn btn-danger btn-sm text-white px-3" onClick="delete_row(this)">-</a>
         </div>
             
@@ -229,21 +229,20 @@
               
             </div>
           
-
         </div>
-        @foreach ($api->parameters as $key=>$item)
+        @foreach ($api->parameter as $key=>$item)
         @if ($key === 0 )
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
-            <input type="text" name="pfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item->field}}">
-            <input type="text" placeholder="Enter Type" name="ptype[]" class="form-control w-100" value="{{$item->type}}">
-            <input type="text" placeholder="Enter Description" name="pdescription[]" class="form-control w-100" value="{{$item->description}}">
+            <input type="text" name="pfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <input type="text" placeholder="Enter Type" name="ptype[]" class="form-control w-100" value="{{$item['type']}}">
+            <input type="text" placeholder="Enter Description" name="pdescription[]" class="form-control w-100" value="{{$item['description']}}">
             <button type="button" class="btn btn-success btn-sm padd px-3"><i class="fas fa-pen"></i>&plus;</button> 
         </div>
         @else
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
-            <input type="text" name="pfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item->field}}">
-            <input type="text" placeholder="Enter Type" name="ptype[]" class="form-control w-100" value="{{$item->type}}">
-            <input type="text" placeholder="Enter Description" name="pdescription[]" class="form-control w-100" value="{{$item->description}}">
+            <input type="text" name="pfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <input type="text" placeholder="Enter Type" name="ptype[]" class="form-control w-100" value="{{$item['type']}}">
+            <input type="text" placeholder="Enter Description" name="pdescription[]" class="form-control w-100" value="{{$item['description']}}">
             <a class="btn btn-danger btn-sm text-white px-3"  onClick="delete_row(this)">-</a>
         </div>
             
@@ -251,8 +250,7 @@
         
 
         @endforeach
-   
-       
+
        
      </div>
 
@@ -283,21 +281,21 @@
             </div>
 
         </div>
-        @foreach ($api->successs as $key=>$item)
+        @foreach ($api->success as $key=>$item)
 
         @if ($key === 0 )
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
-            <input type="text" name="sfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item->field}}">
-            <input type="text" placeholder="Enter Type" name="stype[]" class="form-control w-100" value="{{$item->type}}">
-            <input type="text" placeholder="Enter Description" name="sdescription[]" class="form-control w-100" value="{{$item->description}}">
+            <input type="text" name="sfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <input type="text" placeholder="Enter Type" name="stype[]" class="form-control w-100" value="{{$item['type']}}">
+            <input type="text" placeholder="Enter Description" name="sdescription[]" class="form-control w-100" value="{{$item['description']}}">
             <button type="button" class="btn btn-success btn-sm sadd px-3"><i class="fas fa-pen"></i>&plus;</button> 
         </div>
             
         @else
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
-            <input type="text" name="sfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item->field}}">
-            <input type="text" placeholder="Enter Type" name="stype[]" class="form-control w-100" value="{{$item->type}}">
-            <input type="text" placeholder="Enter Description" name="sdescription[]" class="form-control w-100" value="{{$item->description}}">
+            <input type="text" name="sfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <input type="text" placeholder="Enter Type" name="stype[]" class="form-control w-100" value="{{$item['type']}}">
+            <input type="text" placeholder="Enter Description" name="sdescription[]" class="form-control w-100" value="{{$item['description']}}">
             <a class="btn btn-danger btn-sm text-white px-3"  onClick="delete_row(this)">-</a>
         </div>
             
@@ -337,20 +335,20 @@
             </div>
 
         </div>
-        @foreach ($api->errors as $key=>$item)
+        @foreach ($api->error as $key=>$item)
 
         @if ($key === 0 )
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
-            <input type="text" name="efield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item->field}}">
-            <input type="text" placeholder="Enter Type" name="etype[]" class="form-control w-100" value="{{$item->type}}">
-            <input type="text" placeholder="Enter Description" name="edescription[]" class="form-control w-100" value="{{$item->description}}">
+            <input type="text" name="efield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <input type="text" placeholder="Enter Type" name="etype[]" class="form-control w-100" value="{{$item['type']}}">
+            <input type="text" placeholder="Enter Description" name="edescription[]" class="form-control w-100" value="{{$item['description']}}">
             <button type="button" class="btn btn-success btn-sm eadd px-3"><i class="fas fa-pen"></i>&plus;</button> 
         </div>
         @else
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
-            <input type="text" name="efield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item->field}}">
-            <input type="text" placeholder="Enter Type" name="etype[]" class="form-control w-100" value="{{$item->type}}">
-            <input type="text" placeholder="Enter Description" name="edescription[]" class="form-control w-100" value="{{$item->description}}">
+            <input type="text" name="efield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <input type="text" placeholder="Enter Type" name="etype[]" class="form-control w-100" value="{{$item['type']}}">
+            <input type="text" placeholder="Enter Description" name="edescription[]" class="form-control w-100" value="{{$item['description']}}">
             <a class="btn btn-danger btn-sm text-white px-3"  onClick="delete_row(this)">-</a>
         </div>
             

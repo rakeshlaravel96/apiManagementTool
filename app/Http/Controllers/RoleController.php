@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Arr;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
@@ -79,7 +79,7 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Role $role)
-    {
+    {  
         return view('admin.role.create')->with('role', $role);
     }
 

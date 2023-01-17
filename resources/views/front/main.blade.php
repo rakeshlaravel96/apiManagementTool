@@ -1,7 +1,7 @@
 <div class="main">
     <div class="basic-info">
         <div class="title">
-            <h1>Perfex CRM REST API</h1>
+            <h1>API Management Tool</h1>
             <h4>Available commands &amp; examples of REST API for Perfex CRM</h4>
           </div>
     </div>
@@ -84,529 +84,211 @@
      </div>
 
 
+@foreach ($modules as $item)
+<div class="api-detail">
+  <h2 id="m{{$item->id}}">
+      {{$item->name}}
+  </h2>
 
-    <div class="api-detail">
-        <h2>
-            Customer
-        </h2>
-        <div class="api-detailed post-api">
-            <div class="api-left">
-              <h3 class="title">
-                Customer - Add New Customer
-              </h3>
-              <div class="api-type">
-                <button class="btn post"> POST</button> <div class="hosting">
-                    yourdomain.com/api/customers
-                </div>
-              </div>
+  @foreach ($item->apis as $api)
+  <div class="api-detailed {{$api->method}}-api" id="a{{$api->id}}">
+    <div class="api-left">
+      <h3 class="title" >
+        {{$api->module->name}} - {{$api->name}}
+      </h3>
+      <div class="api-type {{$api->method}}-api">
+        <button class="btn {{$api->method}}-api"> {{$api->method}}</button> <div class="hosting">
+          {{$api->hosting->name}}/{{$api->endpoint}}
+        </div>
+      </div>
 
-              <div class="header">
-                <div class="title-json">
-                    <h4 class="title">
-                        Header
-                    </h4>
-                    <h6 >json</h6>
-                </div>
-
-                <table >
-                    <thead>
-                      <tr>
-                      <th style="width: 30%">Field</th>
-                        <th style="width: 10%">Type</th>
-                        <th style="width: 70%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="code" >Authorization</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                        Basic Access Authentication token.
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-               
-              </div>
-
-
-
-              <div class="header">
-                <div class="title-json">
-                    <h4 class="title">
-                        Parmeter
-                    </h4>
-                    <h6 >json</h6>
-                   
-                </div>
-
-                <table >
-                    <thead>
-                      <tr>
-                      <th style="width: 30%">Field</th>
-                        <th style="width: 10%">Type</th>
-                        <th style="width: 70%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="code" >company</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      	
-                             Mandatory Customer company.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="code" >company</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      	
-                             Mandatory Customer company.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="code" >company</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      	
-                             Mandatory Customer company.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="code" >company</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      	
-                             Mandatory Customer company.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="code" >company</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      	
-                             Mandatory Customer company.
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-
-
-               
-              </div>
-
-
-
-              <div class="header">
-                <div class="title-json">
-                    <h4 class="title">
-                        Success 200
-                    </h4>
-                    <h6 >json</h6>
-                   
-                </div>
-
-                <table >
-                    <thead>
-                      <tr>
-                      <th style="width: 30%">Field</th>
-                        <th style="width: 10%">Type</th>
-                        <th style="width: 70%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="code" >status</td>
-                          <td>
-                            Boolean
-                          </td>
-                        <td>
-                            Request status.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="code" >message</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      		
-                       Customer add successful.
-                        </td>
-                      </tr>
-               
-                    </tbody>
-                  </table>
-
-
-                  
-               
-              </div>
-
-
-
-
-              <div class="header">
-                <div class="title-json">
-                    <h4 class="title">
-                        Error 4xx
-
-                    </h4>
-                    <h6 >json</h6>
-                   
-                </div>
-
-                <table >
-                    <thead>
-                      <tr>
-                      <th style="width: 30%">Field</th>
-                        <th style="width: 10%">Type</th>
-                        <th style="width: 70%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                          <td class="code" >status</td>
-                            <td>
-                              Boolean
-                            </td>
-                          <td>
-                              Request status.
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="code" >message</td>
-                            <td>
-                              String
-                            </td>
-                          <td>
-                                
-                         Customer add successful.
-                          </td>
-                        </tr>
-                 
-                      </tbody>
-                  </table>
-
-
-                  
-               
-              </div>
-
-            </div>
-            <div class="api-right">
-               
-                    <h3>
-                        Success-Response
-                      </h3>
-    
-                      <div class="result">
-                        <p>HTTP/1.1 200 OK</p>
-                        <p>{</p>
-                        <p>&quot;status&quot;: true,</p>
-                        
-                        <p>&quot;message&quot;: &quot;Customer Update Successful.&quot;</p>
-                        
-                        <p>}</p>
-                      </div>
-                  <h3>
-                    Error-Response
-                  </h3>
-
-                  <div class="result">
-                    <p>HTTP/1.1 200 OK</p>
-                    <p>{</p>
-                    <p>&quot;status&quot;: true,</p>
-                    
-                    <p>&quot;message&quot;: &quot;Customer Update Successful.&quot;</p>
-                    
-                    <p>}</p>
-                  </div>
-            </div>
+      <div class="header">
+        <div class="title-json">
+            <h4 class="title">
+                Header
+            </h4>
+            <h6 >{{$api->responseformat}}</h6>
         </div>
 
-    </div>
-
-     
-
-
-
-
-    
-
-    <div class="api-detail">
-        <h2>
-            Customer
-        </h2>
-        <div class="api-detailed post-api">
-            <div class="api-left">
-              <h3 class="title">
-                Customer - Add New Customer
-              </h3>
-              <div class="api-type">
-                <button class="btn post"> POST</button> <div class="hosting">
-                    yourdomain.com/api/customers
-                </div>
-              </div>
-
-              <div class="header">
-                <div class="title-json">
-                    <h4 class="title">
-                        Header
-                    </h4>
-                    <h6 >json</h6>
-                </div>
-
-                <table >
-                    <thead>
-                      <tr>
-                      <th style="width: 30%">Field</th>
-                        <th style="width: 10%">Type</th>
-                        <th style="width: 70%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="code" >Authorization</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                        Basic Access Authentication token.
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-               
-              </div>
+        <table >
+            <thead>
+              <tr>
+              <th style="width: 30%">Field</th>
+                <th style="width: 10%">Type</th>
+                <th style="width: 70%">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($api->header as $head)
+              <tr>
+                <td class="code" >{{$head['field']}}</td>
+                  <td>
+                    {{$head['type']}}
+                  </td>
+                <td>
+                  {{$head['description']}}
+                </td>
+              </tr>
+              @endforeach
+             
+            </tbody>
+          </table>
+       
+      </div>
 
 
 
-              <div class="header">
-                <div class="title-json">
-                    <h4 class="title">
-                        Parmeter
-                    </h4>
-                    <h6 >json</h6>
-                   
-                </div>
-
-                <table >
-                    <thead>
-                      <tr>
-                      <th style="width: 30%">Field</th>
-                        <th style="width: 10%">Type</th>
-                        <th style="width: 70%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="code" >company</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      	
-                             Mandatory Customer company.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="code" >company</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      	
-                             Mandatory Customer company.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="code" >company</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      	
-                             Mandatory Customer company.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="code" >company</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      	
-                             Mandatory Customer company.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="code" >company</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      	
-                             Mandatory Customer company.
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-
-
-               
-              </div>
-
-
-
-              <div class="header">
-                <div class="title-json">
-                    <h4 class="title">
-                        Success 200
-                    </h4>
-                    <h6 >json</h6>
-                   
-                </div>
-
-                <table >
-                    <thead>
-                      <tr>
-                      <th style="width: 30%">Field</th>
-                        <th style="width: 10%">Type</th>
-                        <th style="width: 70%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="code" >status</td>
-                          <td>
-                            Boolean
-                          </td>
-                        <td>
-                            Request status.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="code" >message</td>
-                          <td>
-                            String
-                          </td>
-                        <td>
-                      		
-                       Customer add successful.
-                        </td>
-                      </tr>
-               
-                    </tbody>
-                  </table>
-
-
-                  
-               
-              </div>
-
-
-
-
-              <div class="header">
-                <div class="title-json">
-                    <h4 class="title">
-                        Error 4xx
-
-                    </h4>
-                    <h6 >json</h6>
-                   
-                </div>
-
-                <table >
-                    <thead>
-                      <tr>
-                      <th style="width: 30%">Field</th>
-                        <th style="width: 10%">Type</th>
-                        <th style="width: 70%">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                          <td class="code" >status</td>
-                            <td>
-                              Boolean
-                            </td>
-                          <td>
-                              Request status.
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="code" >message</td>
-                            <td>
-                              String
-                            </td>
-                          <td>
-                                
-                         Customer add successful.
-                          </td>
-                        </tr>
-                 
-                      </tbody>
-                  </table>
-
-
-                  
-               
-              </div>
-
-            </div>
-            <div class="api-right">
-               
-                    <h3>
-                        Success-Response
-                      </h3>
-    
-                      <div class="result">
-                        <p>HTTP/1.1 200 OK</p>
-                        <p>{</p>
-                        <p>&quot;status&quot;: true,</p>
-                        
-                        <p>&quot;message&quot;: &quot;Customer Update Successful.&quot;</p>
-                        
-                        <p>}</p>
-                      </div>
-              
-                
-
-                  <h3>
-                    Error-Response
-                  </h3>
-
-                  <div class="result">
-                    <p>HTTP/1.1 200 OK</p>
-                    <p>{</p>
-                    <p>&quot;status&quot;: true,</p>
-                    
-                    <p>&quot;message&quot;: &quot;Customer Update Successful.&quot;</p>
-                    
-                    <p>}</p>
-                  </div>
-            </div>
+      <div class="header">
+        <div class="title-json">
+            <h4 class="title">
+                Parmeter
+            </h4>
+            <h6 >{{$api->responseformat}}</h6>
+           
         </div>
 
-    </div>
+        <table >
+            <thead>
+              <tr>
+              <th style="width: 30%">Field</th>
+                <th style="width: 10%">Type</th>
+                <th style="width: 70%">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($api->parameter as $head)
+              <tr>
+                <td class="code" >{{$head['field']}}</td>
+                  <td>
+                    {{$head['type']}}
+                  </td>
+                <td>
+                  {{$head['description']}}
+                </td>
+              </tr>
+              @endforeach
+             
+            </tbody>
+          </table>
 
+
+
+       
+      </div>
+
+
+
+      <div class="header">
+        <div class="title-json">
+            <h4 class="title">
+               {!!$api->apiresponse!!}
+            </h4>
+            <h6 >{{$api->responseformat}}</h6>
+           
+        </div>
+
+        <table >
+            <thead>
+              <tr>
+              <th style="width: 30%">Field</th>
+                <th style="width: 10%">Type</th>
+                <th style="width: 70%">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($api->success as $head)
+              <tr>
+                <td class="code" >{{$head['field']}}</td>
+                  <td>
+                    {{$head['type']}}
+                  </td>
+                <td>
+                  {{$head['description']}}
+                </td>
+              </tr>
+              @endforeach
+             
+            </tbody>
+          </table>
+
+
+          
+       
+      </div>
+
+
+
+
+      <div class="header">
+        <div class="title-json">
+            <h4 class="title">
+               {!!$api->failresponse!!}
+
+            </h4>
+            <h6 >{{$api->responseformat}}</h6>
+           
+        </div>
+
+        <table >
+            <thead>
+              <tr>
+              <th style="width: 30%">Field</th>
+                <th style="width: 10%">Type</th>
+                <th style="width: 70%">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($api->error as $head)
+              <tr>
+                <td class="code" >{{$head['field']}}</td>
+                  <td>
+                    {{$head['type']}}
+                  </td>
+                <td>
+                  {{$head['description']}}
+                </td>
+              </tr>
+              @endforeach
+               
+         
+              </tbody>
+          </table>
+
+
+          
+       
+      </div>
+
+    </div>
+    <div class="api-right">
+       
+            <h3>
+                Success-Response
+              </h3>
+
+              <div class="result">
+             {!!$api->successresponse!!}
+              </div>
+          <h3>
+            Error-Response
+          </h3>
+
+          <div class="result">
+            {!!$api->errorresponse!!}
+          </div>
+    </div>
+</div>
+
+
+  @endforeach
+  
+</div>
+
+
+
+@endforeach
+   
+</div>
 
        
  </div>

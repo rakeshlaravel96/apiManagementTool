@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::table('apis', function (Blueprint $table) {
             $table->string('updatedby')->nullable();
+            $table->json('header');
+            $table->json('parameter');
+            $table->json('success');
+            $table->json('error');
+           
          
         });
     }
@@ -27,7 +32,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('apis', function (Blueprint $table) {
-            $table->dropColumn(['updatedby']);
+            $table->dropColumn(['updatedby',]);
         });
     }
 };
