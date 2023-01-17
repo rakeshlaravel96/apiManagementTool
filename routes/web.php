@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HostingController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
@@ -26,9 +27,12 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', function () {
-    return view('front.index');
-});
+// Route::get('/', function () {
+//     return view('front.index');
+// });
+
+Route::get('/', [FrontController::class, 'home'])->name('home');
+
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'userlist'])->name('userList');

@@ -25,9 +25,23 @@ class Api extends Model
         'failresponse',
         'developedby',
         'optional',
-        'updatedby'
+        'updatedby',   
+         'header',
+         'parameter',
+         'success', 
+         'error'
+       
+
 
     ];
+
+    protected $casts = [
+        'header'=> 'array',
+        'parameter'=> 'array',
+        'success'=> 'array',
+        'error'=> 'array',
+    ];
+
 
     public function apirecords(){
         return $this->hasMany(Apirecord::class);
@@ -52,19 +66,19 @@ class Api extends Model
 
 
 
-    public function headers(){
-        return $this->hasMany(Header::class);
-    }
+    // public function headers(){
+    //     return $this->hasMany(Header::class);
+    // }
 
 
-    public function errors(){
-        return $this->hasMany(Error::class);
-    }
-    public function successs(){
-        return $this->hasMany(Success::class);
-    }
-    public function parameters(){
-        return $this->hasMany(Parameter::class);
-    }
+    // public function errors(){
+    //     return $this->hasMany(Error::class);
+    // }
+    // public function successs(){
+    //     return $this->hasMany(Success::class);
+    // }
+    // public function parameters(){
+    //     return $this->hasMany(Parameter::class);
+    // }
 
 }

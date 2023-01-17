@@ -93,6 +93,7 @@
 
             .api-detailed{
                 display: flex;
+                margin-bottom: 3rem;
                 padding: 2rem 0;
                 position: relative;
 
@@ -100,6 +101,22 @@
                 &.post-api{
                     background: rgba(73,204,144,.1);
                     border: 1px dotted #49cc90;
+                    border-radius: 6px;
+                }
+
+                &.delete-api{
+                    background: rgba(249,62,62,.1);
+                     border: 1px dotted #f93e3e;
+                     border-radius: 6px;
+                }
+                &.get-api{
+                    background: rgba(97,175,254,.1);
+                    border: 1px dotted #61affe;
+                    border-radius: 6px;
+                }
+                &.put-api{
+                    background: rgba(252,161,48,.1);
+                    border: 1px dotted #fca130;
                     border-radius: 6px;
                 }
 
@@ -118,13 +135,38 @@
                     .api-type{
                         margin:0.5rem;
                         width: 100%;
-                        background: rgba(73,204,144,.1);
-                        border: 1px dotted #49cc90;
+                   
 
                         border-radius: 6px;
                         padding: 0.6rem;
                         display: flex; 
                         gap: 1rem;
+
+                        &.post-api{
+                            background: rgba(73,204,144,.1);
+                            border: 1px dotted #49cc90;
+                            border-radius: 6px;
+                        }
+        
+                        &.delete-api{
+                            background: rgba(249,62,62,.1);
+                             border: 1px dotted #f93e3e;
+                             border-radius: 6px;
+                        }
+
+                        &.get-api{
+                            background: rgba(97,175,254,.1);
+                            border: 1px dotted #61affe;
+                            border-radius: 6px;
+                        }
+
+                        &.put-api{
+                            background: rgba(252,161,48,.1);
+                            border: 1px dotted #fca130;
+                            border-radius: 6px;
+                        }
+        
+
 
                         .btn{
                             font-size: 11px;
@@ -137,10 +179,21 @@
                             font-family: sans-serif;
                             color: #fff;
                             margin-left: 1rem;
+                            text-transform: uppercase;
 
 
-                            &.post{
+                            &.post-api{
                                 background: #49cc90;
+                            }
+                            &.delete-api{
+                                background: #f93e3e;
+                            }
+                            &.get-api{
+                                background: #61affe;
+                            }
+
+                            &.put-api{
+                                background: #fca130;
                             }
                         }
 

@@ -5,10 +5,10 @@
             <img src="{{asset('img/logo.png')}}" alt="" srcset="">
         </div>
         <h3>
-            Perfex CRM REST API
+           API Management Tool
         </h3>
         <p>
-            by <a href="http://"> themesic</a>
+            by <a href="http://"> DBM</a>
         </p>
 
 
@@ -19,35 +19,21 @@
         <li class="module-list">
             <a href="http://">Basic Information</a>
         </li>
+        @foreach ($modules as $item)
         <li class="module-list">
-            <a href="http://">Customer</a>
+            <a href="#m{{$item->id}}">{{$item->name}}</a>
             <ul class="api-list">
+                @foreach ($item->apis as $api)
                 <li class="api">
-                    <a href="http://"><span class="post">POST</span> <div>
-                        Add New Customer  </div></a>
+                    <a href="#a{{$api->id}}"><span class="{{$api->method}}">{{$api->method}}</span> <div>
+                       {{$api->name}}  </div></a>
                 </li>
-                <li class="api ">
-                    <a href="http://"><span class="delete">DEL</span> <div>
-                        Delete a Customer  </div></a>
-                </li>
-                <li class="api">
-                    <a href="http://"><span class="get">GET</span> <div>
-                        Request customer information
-                    </div></a>
-                </li>
-                <li class="api">
-                    <a href="http://"><span class="get">GET</span> <div>
-                        Search Customer Information
-                    </div></a>
-                </li>
-                <li class="api">
-                    <a href="http://"><span class="put">PUT</span> <div>
-                        Update a Customer
-
-                    </div></a>
-                </li>
+                @endforeach
+            
             </ul>
         </li>
+        @endforeach
+       
         <li class="module-list">
             <a href="http://">Contact</a>
             <ul class="api-list">

@@ -16,4 +16,7 @@ class Module extends Model
     public function submodules(){
         return $this->hasMany(Submodule::class);
     }
+    public function apis(){
+        return $this->hasMany(Api::class);
+    }
 }
