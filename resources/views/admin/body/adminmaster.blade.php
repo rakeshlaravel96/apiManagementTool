@@ -41,7 +41,13 @@
   <link id="sleek-css" rel="stylesheet" href="{{asset('backend/assets/css/sleek.css')}}" />
 
   <link rel="stylesheet" href="{{asset('scss/adminstyle.css')}}">
-
+   <style>
+    .width-fix{
+      width:97% !important;
+      
+    }
+  
+   </style>
   <!-- FAVICON -->
   <link href="assets/img/favicon.png" rel="shortcut icon" />
 

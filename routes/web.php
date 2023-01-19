@@ -27,11 +27,9 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/', function () {
-//     return view('front.index');
-// });
 
-Route::get('/', [FrontController::class, 'home'])->name('home');
+
+Route::get('/', [FrontController::class, 'home'])->middleware(['auth', 'verified'])->name('home');
 
 
 Route::prefix('admin')->middleware('auth')->group(function () {

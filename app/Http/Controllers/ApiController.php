@@ -49,6 +49,7 @@ class ApiController extends Controller
      */
     public function store(Request $request)
     {
+     
 
         $request->validate([
             'module_id' => 'required',
@@ -87,11 +88,14 @@ class ApiController extends Controller
             $pfield = $request->pfield;
             $ptype = $request->ptype;
             $pdescription = $request->pdescription;
+            $pmandatory = $request->pmandatory;
+
             $parameter = array();
 
             for ($i=0 ; $i<count($pfield) ; $i++) {
                  
                 $parameter[$i]["field"]= $pfield[$i];
+                $parameter[$i]["mandatory"]= $pmandatory[$i];
                $parameter[$i]["type"]= $ptype[$i];
                $parameter[$i]["description"]= $pdescription[$i];
       
@@ -295,62 +299,46 @@ class ApiController extends Controller
         ]);
 
 
-        // $headerfield = Header::where('api_id', $api->id)->pluck('field');
-        // $headertype = Header::where('api_id', $api->id)->pluck('type');
-        // $headerdescription = Header::where('api_id', $api->id)->pluck('description');
-        // $parameterfield = Parameter::where('api_id', $api->id)->pluck('field');
-        // $parametertype = Parameter::where('api_id', $api->id)->pluck('type');
-        // $parameterdescription = Parameter::where('api_id', $api->id)->pluck('description');
-        // $successfield = Success::where('api_id', $api->id)->pluck('field');
-        // $successtype = Success::where('api_id', $api->id)->pluck('type');
-        // $successdescription = Success::where('api_id', $api->id)->pluck('description');
-        // $errorfield = Error::where('api_id', $api->id)->pluck('field');
-        // $errortype = Error::where('api_id', $api->id)->pluck('type');
-        // $errordescription = Error::where('api_id', $api->id)->pluck('description');
-
 
        
+       if(!$api->submodule) {
+        $submod = '';
+       }else{
+        $submod = $api->submodule->name;
+       }
 
-        // $recorddata = [
-        //     'module' => $api->module->name,
-        //     'submodule' => $api->submodule->name,
-        //     'hosting' => $api->hosting->name,
+        $recorddata = [
+            'module' => $api->module->name,
+            'submodule' => $submod,
+            'hosting' => $api->hosting->name,
 
-        //     'name' => $api->name,
-        //     'endpoint' => $api->endpoint,
-        //     'method' => $api->method,
-        //     'responseformat' => $api->responseformat,
+            'name' => $api->name,
+            'endpoint' => $api->endpoint,
+            'method' => $api->method,
+            'responseformat' => $api->responseformat,
 
-        //     'apiresponse' => $api->apiresponse,
-        //     'apipurpose' => $api->apipurpose,
-        //     'casevalidation' => $api->casevalidation,
-        //     'successresponse' => $api->successresponse,
-        //     'errorresponse' => $api->errorresponse,
-        //     'failresponse' => $api->failresponse,
-        //     'developedby' => $api->developedby,
-        //     'optional' => $api->optional,
-        //     'updatedby' => $api->updatedby,
-        //     'hfield'=>json_decode($headerfield) ,
-        //     'htype'=> json_decode($headertype),
-        //     'hdescription'=> json_decode($headerdescription),
-        //     'pfield'=> json_decode($parameterfield),
-        //     'ptype'=> json_decode($parametertype),
-        //     'pdescription'=> json_decode($parameterdescription),
-        //     'sfield'=> json_decode($successfield),
-        //     'stype'=> json_decode($successtype),
-        //     'sdescription'=> json_decode($successdescription),
-        //     'efield'=> json_decode($errorfield),
-        //     'etype'=> json_decode($errortype),
-        //     'edescription'=> json_decode($errordescription),
-        //     'api_id' => $api->id,
-        //     'updatedby' =>$api->updatedby,
+            'apiresponse' => $api->apiresponse,
+            'apipurpose' => $api->apipurpose,
+            'casevalidation' => $api->casevalidation,
+            'successresponse' => $api->successresponse,
+            'errorresponse' => $api->errorresponse,
+            'failresponse' => $api->failresponse,
+            'developedby' => $api->developedby,
+            'optional' => $api->optional,
+            'updatedby' => $api->updatedby,
+            'header'=> $api->header,
+            'parameter'=>$api->parameter,
+            'success'=>$api->success,
+            'error'=>$api->error,
+            'api_id' => $api->id,
+            'updatedby' =>$api->updatedby,
             
-        // ];
+        ];
 
      
 
 
-        // Apirecord::create($recorddata);
+        Apirecord::create($recorddata);
 
 
 
@@ -375,18 +363,19 @@ class ApiController extends Controller
         $pfield = $request->pfield;
         $ptype = $request->ptype;
         $pdescription = $request->pdescription;
+        $pmandatory = $request->pmandatory;
 
         $parameter = array();
 
         for ($i=0 ; $i<count($pfield) ; $i++) {
              
             $parameter[$i]["field"]= $pfield[$i];
+            $parameter[$i]["mandatory"]= $pmandatory[$i];
            $parameter[$i]["type"]= $ptype[$i];
            $parameter[$i]["description"]= $pdescription[$i];
   
         
           }
-
 
           $sfield = $request->sfield;
           $stype = $request->stype;

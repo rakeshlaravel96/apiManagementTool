@@ -127,8 +127,8 @@
                 <label for="responseformat">Response Format</label>
                 <select class="form-select" aria-label="Default select example" name="responseformat">
                     <option value="">Select response format</option>
-                    <option value="json format">json format</option>
-                    <option value="html format">html format</option>
+                    <option value="json format">json</option>
+                    <option value="html format">html</option>
                   </select>
               
                 @error('responseformat')
@@ -160,7 +160,10 @@
             <div class="form-group w-100">
                 <label class="">field</label>
                 <input type="text" class="form-control"  name="hfield[]"  value=""  placeholder="Enter field">
+               
             </div>
+
+          
             <div class="form-group w-100">
                 <label class="">Type</label>
              
@@ -192,6 +195,14 @@
             <div class="form-group w-100">
                 <label class="">field</label>
                 <input type="text" class="form-control"  name="pfield[]"  value="" placeholder="Enter field">
+            </div>
+            <div class="form-group d-flex flex-column align-items-start">
+                <label class="">Optional/Mandatory</label>
+                <div class="d-flex gap-5">
+                    <input class="mt-3" type="checkbox" name="pmandatory[]" id="flexCheckDefault">
+                    <input class="mt-3" type="checkbox" name="pmandatory[]" id="flexCheckDefault">  
+                </div>
+               
             </div>
             <div class="form-group w-100">
                 <label class="">Type</label>
@@ -473,22 +484,38 @@ function removeInputParameter() {
 function addInputParameter() {
     const pfield = document.createElement("input");
     pfield.type = "text";
-    
+    pfield.placeholder = "Enter Field";
     pfield.name = "pfield[]"
-    pfield.className = "form-control w-100";
+    pfield.className = "form-control width-fix";
 
+
+    const poptional = document.createElement("input");
+    poptional.type = "checkbox";
+    poptional.value = 0;
+    poptional.name = "pmandatory[]"
+    poptional.className = "";
+
+    const pmandatory = document.createElement("input");
+    pmandatory.type = "checkbox";
+    pmandatory.value = 1;
+    pmandatory.name = "pmandatory[]"
+    pmandatory.className = "";
+
+   
+   
 
     const ptype = document.createElement("input");
     ptype.type = "text";
+    ptype.placeholder = "Enter Type";
   ;
     ptype.name = "ptype[]"
-    ptype.className = "form-control w-100";
+    ptype.className = "form-control ml-5";
 
     const pdescription = document.createElement("input");
     pdescription.type = "text";
- 
+    pdescription.placeholder = "Enter Description";
     pdescription.name = "pdescription[]"
-    pdescription.className = "form-control w-100";
+    pdescription.className = "form-control";
 
       const pbtn = document.createElement("a");
     pbtn.className = "delete";
@@ -501,6 +528,8 @@ function addInputParameter() {
 
     inputParameter.appendChild(pflex);
     pflex.appendChild(pfield);
+    pflex.appendChild(poptional);
+    pflex.appendChild(pmandatory);
      pflex.appendChild(ptype);
      pflex.appendChild(pdescription);
       pflex.appendChild(pbtn);

@@ -44,7 +44,7 @@ class Api extends Model
 
 
     public function apirecords(){
-        return $this->hasMany(Apirecord::class);
+        return $this->hasMany(Apirecord::class)->orderByDesc('id');
     }
 
 
@@ -63,22 +63,5 @@ class Api extends Model
     }
 
 
-
-
-
-    // public function headers(){
-    //     return $this->hasMany(Header::class);
-    // }
-
-
-    // public function errors(){
-    //     return $this->hasMany(Error::class);
-    // }
-    // public function successs(){
-    //     return $this->hasMany(Success::class);
-    // }
-    // public function parameters(){
-    //     return $this->hasMany(Parameter::class);
-    // }
 
 }

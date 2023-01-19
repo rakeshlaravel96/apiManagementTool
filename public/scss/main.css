@@ -97,8 +97,7 @@ body {
 .contain .main .api-detail .api-detailed {
   display: flex;
   margin-bottom: 3rem;
-  padding: 2rem 0;
-  position: relative;
+  height: 100%;
 }
 .contain .main .api-detail .api-detailed.post-api {
   background: rgba(73, 204, 144, 0.1);
@@ -122,6 +121,33 @@ body {
 }
 .contain .main .api-detail .api-detailed .api-left {
   width: calc(100% - 40rem);
+  padding: 2rem 0;
+}
+.contain .main .api-detail .api-detailed .api-left .title-btn-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.contain .main .api-detail .api-detailed .api-left .title-btn-section .btn {
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 60px;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  color: #fff;
+  margin-left: 1rem;
+  text-transform: uppercase;
+  background-color: #fca130;
+  margin-right: 0.5rem;
+}
+.contain .main .api-detail .api-detailed .api-left .title-btn-section .btn.log {
+  background-color: #7e61fe;
+}
+.contain .main .api-detail .api-detailed .api-left .title-btn-section .btn.comment {
+  background-color: rgba(28, 188, 252, 0.7725490196);
 }
 .contain .main .api-detail .api-detailed .api-left .title {
   margin-left: 2rem;
@@ -234,11 +260,6 @@ body {
 }
 .contain .main .api-detail .api-detailed .api-right {
   width: 40rem;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
   background: #282a36;
   border-radius: 0px 5px 5px 0px;
 }
@@ -353,4 +374,303 @@ body {
 }
 .side-bar .detail .module-list .api-list .api a .put {
   color: #fca130;
+}
+
+.logmodel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(78, 78, 78, 0.555);
+  display: none;
+}
+.logmodel .close {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  z-index: 101;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+}
+.logmodel .logmodel-container {
+  max-width: 120rem;
+  margin: 0 auto;
+  width: 100%;
+  padding: 1rem;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.logmodel .logmodel-container::-webkit-scrollbar {
+  width: 2px;
+}
+.logmodel .logmodel-container::-webkit-scrollbar-thumb {
+  background: rgba(202, 202, 202, 0.205);
+}
+.logmodel .logmodel-container .apiDetailMod {
+  flex-direction: column;
+}
+.logmodel .logmodel-container .norecord {
+  font-size: 3rem;
+  background-color: white;
+  padding: 2rem;
+  color: #f93838;
+}
+.logmodel .logmodel-container .apiDetailModel {
+  display: flex;
+  margin-bottom: 2rem;
+}
+.logmodel .logmodel-container .apiDetailModel.post-api {
+  background: #ebfaf3;
+  border: 1px dotted #49cc90;
+  border-radius: 6px;
+}
+.logmodel .logmodel-container .apiDetailModel.delete-api {
+  background: #feecec;
+  border: 1px dotted #f93e3e;
+  border-radius: 6px;
+}
+.logmodel .logmodel-container .apiDetailModel.get-api {
+  background: #eff8ff;
+  border: 1px dotted #61affe;
+  border-radius: 6px;
+}
+.logmodel .logmodel-container .apiDetailModel.put-api {
+  background: #fff5eb;
+  border: 1px dotted #fca130;
+  border-radius: 6px;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left {
+  width: calc(100% - 40rem);
+  padding: 2rem 0;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .title-btn-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .title-btn-section .btn {
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 60px;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  color: #fff;
+  margin-left: 1rem;
+  text-transform: uppercase;
+  background-color: #fca130;
+  margin-right: 0.5rem;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .title-btn-section .btn.log {
+  background-color: #7e61fe;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .title-btn-section .btn.comment {
+  background-color: rgba(28, 188, 252, 0.7725490196);
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .title {
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .api-type {
+  margin: 0.5rem;
+  width: 100%;
+  border-radius: 6px;
+  padding: 0.6rem;
+  display: flex;
+  gap: 1rem;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .api-type.post-api {
+  background: rgba(73, 204, 144, 0.1);
+  border: 1px dotted #49cc90;
+  border-radius: 6px;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .api-type.delete-api {
+  background: rgba(249, 62, 62, 0.1);
+  border: 1px dotted #f93e3e;
+  border-radius: 6px;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .api-type.get-api {
+  background: rgba(97, 175, 254, 0.1);
+  border: 1px dotted #61affe;
+  border-radius: 6px;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .api-type.put-api {
+  background: rgba(252, 161, 48, 0.1);
+  border: 1px dotted #fca130;
+  border-radius: 6px;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .api-type .btn {
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 60px;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  color: #fff;
+  margin-left: 1rem;
+  text-transform: uppercase;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .api-type .btn.post-api {
+  background: #49cc90;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .api-type .btn.delete-api {
+  background: #f93e3e;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .api-type .btn.get-api {
+  background: #61affe;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .api-type .btn.put-api {
+  background: #fca130;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .api-type .hosting {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(59, 65, 81);
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .header {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .header .title-json {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .header .title-json .title {
+  background-color: #fff;
+  padding: 0.3rem 0.8rem;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .header .title-json h6 {
+  padding: 1px 5px;
+  font-size: 12px;
+  background-color: #fff;
+  line-height: 1.5;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .header table {
+  margin: 0 2rem;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .header table thead {
+  border-bottom: 1px solid #ddd;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .header table thead th {
+  padding-bottom: 1rem;
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .header table tbody {
+  padding-top: 1rem;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .header table tbody td {
+  padding: 1rem 0;
+  font-size: 14px;
+  font-style: normal;
+}
+.logmodel .logmodel-container .apiDetailModel .api-left .header table tbody .code {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+}
+.logmodel .logmodel-container .apiDetailModel .api-right {
+  width: 40rem;
+  background: #282a36;
+  border-radius: 0px 5px 5px 0px;
+}
+.logmodel .logmodel-container .apiDetailModel .api-right h3 {
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+  background-color: #282A36;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+.logmodel .logmodel-container .apiDetailModel .api-right .result {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 2rem;
+  border-radius: 0px;
+  position: relative;
+  margin: 10px 0 20px 0;
+  background: #000;
+  color: #50fa7b;
+}
+
+.commentmodel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 110;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(78, 78, 78, 0.555);
+  display: none;
+}
+.commentmodel .commentclose {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  z-index: 101;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+}
+.commentmodel-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  width: 100%;
+  padding: 2rem 0;
+}
+.commentmodel-container .comment-box form {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.commentmodel-container .comment-box form textarea {
+  font-size: 1.3rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.commentmodel-container .comment-box form .btn {
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 60px;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  border-radius: 3px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: rgba(28, 188, 252, 0.7725490196);
+}
+.commentmodel-container .comment-list {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 5px;
+}
+.commentmodel-container .comment-list .name {
+  color: rgba(28, 188, 252, 0.7725490196);
+  font-size: 2rem;
+  font-weight: 500;
+}
+.commentmodel-container .comment-list .comment-text {
+  font-size: 1.3rem;
 }/*# sourceMappingURL=main.css.map */

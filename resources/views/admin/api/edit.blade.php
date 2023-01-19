@@ -127,8 +127,8 @@
                 <label for="responseformat">Response Format</label>
                 <select class="form-select" aria-label="Default select example" name="responseformat">
                     <option value="">Select response format</option>
-                    <option value="json format" @isset($api)@if ($api->responseformat=== 'json format') selected @endif @endisset >json format</option>
-                    <option value="html format"  @isset($api)@if ($api->responseformat=== 'html format') selected @endif @endisset>html format</option>
+                    <option value="json" @isset($api)@if ($api->responseformat=== 'json') selected @endif @endisset >json format</option>
+                    <option value="html"  @isset($api)@if ($api->responseformat=== 'html') selected @endif @endisset>html format</option>
                   </select>
               
                 @error('responseformat')
@@ -181,7 +181,8 @@
         @foreach ($api->header as $key=>$item)
         @if ($key === 0)
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
-            <input type="text" name="hfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <input type="text" name="hfield[]" class="form-control width-fix" placeholder="Enter Field" value="{{$item['field']}}">
+            
             <input type="text" placeholder="Enter Type" name="htype[]" class="form-control w-100" value="{{$item['type']}}">
             <input type="text" placeholder="Enter Description" name="hdescription[]" class="form-control w-100" value="{{$item['description']}}">
             <button type="button" class="btn btn-success btn-sm hadd px-3"><i class="fas fa-pen"></i>&plus;</button> 
@@ -189,7 +190,9 @@
             
         @else
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
-            <input type="text" name="hfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <input type="text" name="hfield[]" class="form-control width-fix" placeholder="Enter Field" value="{{$item['field']}}">
+
+            
             <input type="text" placeholder="Enter Type" name="htype[]" class="form-control w-100" value="{{$item['type']}}">
             <input type="text" placeholder="Enter Description" name="hdescription[]" class="form-control w-100" value="{{$item['description']}}">
             <a class="btn btn-danger btn-sm text-white px-3" onClick="delete_row(this)">-</a>
@@ -211,9 +214,13 @@
 
      <div class="d-flex align-items-center gap-3 justify-content-between inp-group-parameter flex-column py-3">
         <div class=" w-100 d-flex align-items-start gap-5 justify-content-between inp-group-parameter pt-1">
-            <div class="form-group w-100">
+            <div class="form-group width-fix">
                 <label class="">field</label>
                
+            </div>
+            <div class="form-group">
+                <label class="">optional/mandatory</label>
+                {{-- <input type="text" class="form-control"  name="hfield[]"  value=""> --}}
             </div>
             <div class="form-group w-100">
                 <label class="">Type</label>
@@ -234,6 +241,10 @@
         @if ($key === 0 )
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
             <input type="text" name="pfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <div class="d-flex gap-5">
+                <input class="mt-3" type="checkbox"   @isset($api)@if ($item['mandatory'] === '0') checked @endif @endisset value="0" name="pmandatory[]" id="flexCheckDefault">
+                <input class="mt-3" type="checkbox"  @isset($api)@if ($item['mandatory'] === '1') checked @endif @endisset value="1" name="pmandatory[]" id="flexCheckDefault">  
+            </div>
             <input type="text" placeholder="Enter Type" name="ptype[]" class="form-control w-100" value="{{$item['type']}}">
             <input type="text" placeholder="Enter Description" name="pdescription[]" class="form-control w-100" value="{{$item['description']}}">
             <button type="button" class="btn btn-success btn-sm padd px-3"><i class="fas fa-pen"></i>&plus;</button> 
@@ -241,6 +252,10 @@
         @else
         <div class="w-100 d-flex align-items-center gap-5 justify-content-between inp-group">
             <input type="text" name="pfield[]" class="form-control w-100" placeholder="Enter Field" value="{{$item['field']}}">
+            <div class="d-flex gap-5">
+                <input class="mt-3" type="checkbox" @isset($api)@if ($item['mandatory'] === '0') checked @endif @endisset  value="0" name="pmandatory[]" id="flexCheckDefault">
+                <input class="mt-3" type="checkbox" @isset($api)@if ($item['mandatory'] === '1') checked @endif @endisset value="1" name="pmandatory[]" id="flexCheckDefault">  
+            </div>
             <input type="text" placeholder="Enter Type" name="ptype[]" class="form-control w-100" value="{{$item['type']}}">
             <input type="text" placeholder="Enter Description" name="pdescription[]" class="form-control w-100" value="{{$item['description']}}">
             <a class="btn btn-danger btn-sm text-white px-3"  onClick="delete_row(this)">-</a>
@@ -353,7 +368,7 @@
         </div>
             
         @endif
-      
+       
 
         @endforeach
      </div>
@@ -550,34 +565,52 @@ const addBtnParameter = document.querySelector(".padd");
 
 const inputParameter = document.querySelector('.inp-group-parameter');
 
+
 function removeInputParameter() {
     this.parentElement.remove();
 }
 
+
 function addInputParameter() {
     const pfield = document.createElement("input");
     pfield.type = "text";
-    
+    pfield.placeholder = "Enter Field";
     pfield.name = "pfield[]"
-    pfield.className = "form-control w-100";
+    pfield.className = "form-control width-fix";
 
+
+    const poptional = document.createElement("input");
+    poptional.type = "checkbox";
+    poptional.value = 0;
+    poptional.name = "pmandatory[]"
+    poptional.className = "";
+
+    const pmandatory = document.createElement("input");
+    pmandatory.type = "checkbox";
+    pmandatory.value = 1;
+    pmandatory.name = "pmandatory[]"
+    pmandatory.className = "";
+
+   
+   
 
     const ptype = document.createElement("input");
     ptype.type = "text";
+    ptype.placeholder = "Enter Type";
   ;
     ptype.name = "ptype[]"
-    ptype.className = "form-control w-100";
+    ptype.className = "form-control";
 
     const pdescription = document.createElement("input");
     pdescription.type = "text";
- 
+    pdescription.placeholder = "Enter Description";
     pdescription.name = "pdescription[]"
-    pdescription.className = "form-control w-100";
+    pdescription.className = "form-control";
 
       const pbtn = document.createElement("a");
     pbtn.className = "delete";
     pbtn.innerHTML = "-";
-    pbtn.className = "btn btn-danger btn-sm px-3";
+    pbtn.className = "btn btn-danger btn-sm px-3 text-white";
     pbtn.addEventListener('click', removeInputParameter);
 
     const pflex = document.createElement('div');
@@ -585,6 +618,8 @@ function addInputParameter() {
 
     inputParameter.appendChild(pflex);
     pflex.appendChild(pfield);
+    pflex.appendChild(poptional);
+    pflex.appendChild(pmandatory);
      pflex.appendChild(ptype);
      pflex.appendChild(pdescription);
       pflex.appendChild(pbtn);
