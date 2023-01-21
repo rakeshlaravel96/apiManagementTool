@@ -43,74 +43,37 @@
       <div class="col-md-6">
         <div class="form-group">
           <div class="form-check">
-            <input class="" type="checkbox" value="View(own)"name='module[]' id="flexCheckDefault"  @isset($role)
-              @foreach ($role->module as $item)
-                @if ($item === 'View(own)')
-                  checked
-                @endif
-              @endforeach
-            @endisset>
+            <input class="" type="checkbox" value="1"name='mview' @isset($role)@if ($role->mview == '1') checked @endif @endisset  id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
               View(own)
 
             </label>
           </div>
           <div class="form-check">
-            <input class="" type="checkbox" value="View(global)"name='module[]' id="flexCheckChecked" 
-            @isset($role)
-            @foreach ($role->module as $item)
-              @if ($item === 'View(global)')
-                checked
-              @endif
-            @endforeach
-          @endisset>
+            <input class="" type="checkbox" value="1" name='mviewAll' @isset($role) @if ($role->mviewAll =='1') checked @endif @endisset  id="flexCheckChecked" >
             <label class="form-check-label" for="flexCheckChecked">
               View(global)
             </label>
           </div>
           <div class="form-check">
-            <input class="" type="checkbox" value="Create"name='module[]' id="flexCheckChecked" 
-            @isset($role)
-            @foreach ($role->module as $item)
-              @if ($item === 'Create')
-                checked
-              @endif
-            @endforeach
-          @endisset>
+            <input class="" type="checkbox" value="1" name='mcreate' @isset($role)@if ($role->mcreate =='1') checked @endif @endisset id="flexCheckChecked" >
             <label class="form-check-label" for="flexCheckChecked">
               Create
             </label>
           </div>
           <div class="form-check">
-            <input class="" type="checkbox" value="Edit"name='module[]' id="flexCheckChecked" 
-            @isset($role)
-            @foreach ($role->module as $item)
-              @if ($item === 'Edit')
-                checked
-              @endif
-            @endforeach
-          @endisset>
+            <input class="" type="checkbox" value="1" name='medit' @isset($role)@if ($role->medit == '1') checked @endif @endisset id="flexCheckChecked" >
             <label class="form-check-label" for="flexCheckChecked">
            Edit
             </label>
           </div>
           <div class="form-check">
-            <input class="" type="checkbox" value="Delete"name='module[]'id="flexCheckChecked" 
-            @isset($role)
-            @foreach ($role->module as $item)
-              @if ($item === 'Delete')
-                checked
-              @endif
-            @endforeach
-          @endisset>
+            <input class="" type="checkbox" value="1" name='mdelete' @isset($role)@if ($role->mdelete == '1') checked @endif @endisset id="flexCheckChecked" >
             <label class="form-check-label" for="flexCheckChecked">
               Delete
             </label>
           </div>
-          
-            @error('responseformat')
-            <small style="color: rgba(255, 0, 0, 0.626)">{{ $message }}</small>
-            @enderror
+        
         </div>
     </div>
     
@@ -127,75 +90,37 @@
     <div class="col-md-6">
       <div class="form-group">
         <div class="form-check">
-          <input class="" type="checkbox" value="View(own)"name='hosting[]' id="flexCheckDefault"
-          @isset($role)
-            @foreach ($role->hosting as $item)
-              @if ($item === 'View(own)')
-                checked
-              @endif
-            @endforeach
-          @endisset>
+          <input class="" type="checkbox" value="1" name='hview' @isset($role)@if ($role->hview == '1') checked @endif @endisset id="flexCheckDefault" >
           <label class="form-check-label" for="flexCheckDefault">
             View(own)
 
           </label>
         </div>
         <div class="form-check">
-          <input class="" type="checkbox" value="View(global)"name='hosting[]' id="flexCheckChecked" 
-          @isset($role)
-            @foreach ($role->hosting as $item)
-              @if ($item === 'View(global)')
-                checked
-              @endif
-            @endforeach
-          @endisset>
+          <input class="" type="checkbox" value="1" name='hviewAll' @isset($role)@if ($role->hviewAll == '1') checked @endif @endisset id="flexCheckChecked" >
           <label class="form-check-label" for="flexCheckChecked">
             View(global)
           </label>
         </div>
         <div class="form-check">
-          <input class="" type="checkbox" value="Create"name='hosting[]' id="flexCheckChecked" 
-          @isset($role)
-          @foreach ($role->hosting as $item)
-            @if ($item === 'Create')
-              checked
-            @endif
-          @endforeach
-        @endisset>
+          <input class="" type="checkbox" value="1" name='hcreate' @isset($role)@if ($role->hcreate == '1') checked @endif @endisset id="flexCheckChecked" >
           <label class="form-check-label" for="flexCheckChecked">
             Create
           </label>
         </div>
         <div class="form-check">
-          <input class="" type="checkbox" value="Edit"name='hosting[]' id="flexCheckChecked" 
-          @isset($role)
-          @foreach ($role->hosting as $item)
-            @if ($item === 'Edit')
-              checked
-            @endif
-          @endforeach
-        @endisset>
+          <input class="" type="checkbox" value="1" name='hedit' @isset($role)@if ($role->hedit == '1') checked @endif @endisset id="flexCheckChecked" >
           <label class="form-check-label" for="flexCheckChecked">
          Edit
           </label>
         </div>
         <div class="form-check">
-          <input class="" type="checkbox" value="Delete"name='hosting[]' id="flexCheckChecked" 
-          @isset($role)
-          @foreach ($role->hosting as $item)
-            @if ($item === 'Delete')
-              checked
-            @endif
-          @endforeach
-        @endisset>
+          <input class="" type="checkbox" value="1" name='hdelete' @isset($role)@if ($role->hdelete == '1') checked @endif @endisset id="flexCheckChecked" >
           <label class="form-check-label" for="flexCheckChecked">
             Delete
           </label>
         </div>
-        
-          @error('responseformat')
-          <small style="color: rgba(255, 0, 0, 0.626)">{{ $message }}</small>
-          @enderror
+      
       </div>
   </div>
   
@@ -212,75 +137,38 @@
   <div class="col-md-6">
     <div class="form-group">
       <div class="form-check">
-        <input class="" type="checkbox" value="View(own)"name='api[]' id="flexCheckDefault"
-        @isset($role)
-        @foreach ($role->api as $item)
-          @if ($item === 'View(own)')
-            checked
-          @endif
-        @endforeach
-      @endisset>
+        <input class="" type="checkbox" value="1" name='aview' @isset($role)@if ($role->aview == '1') checked @endif @endisset id="flexCheckDefault" >
         <label class="form-check-label" for="flexCheckDefault">
           View(own)
 
         </label>
       </div>
       <div class="form-check">
-        <input class="" type="checkbox" value="View(global)"name='api[]' id="flexCheckChecked" 
-        @isset($role)
-        @foreach ($role->api as $item)
-          @if ($item === 'View(global)')
-            checked
-          @endif
-        @endforeach
-      @endisset>
+        <input class="" type="checkbox" value="1" name='aviewAll' @isset($role)@if ($role->aviewAll == '1') checked @endif @endisset id="flexCheckDefault" >
         <label class="form-check-label" for="flexCheckChecked">
           View(global)
         </label>
       </div>
       <div class="form-check">
-        <input class="" type="checkbox" value="Create"name='api[]' id="flexCheckChecked" 
-        @isset($role)
-        @foreach ($role->api as $item)
-          @if ($item === 'Create')
-            checked
-          @endif
-        @endforeach
-      @endisset>
+        <input class="" type="checkbox" value="1" name='acreate' @isset($role)@if ($role->acreate == '1') checked @endif @endisset id="flexCheckChecked" >
         <label class="form-check-label" for="flexCheckChecked">
           Create
         </label>
       </div>
       <div class="form-check">
-        <input class="" type="checkbox" value="Edit"name='api[]' id="flexCheckChecked" 
-        @isset($role)
-        @foreach ($role->api as $item)
-          @if ($item === 'Edit')
-            checked
-          @endif
-        @endforeach
-      @endisset>
+        <input class="" type="checkbox" value="1" name='aedit' @isset($role)@if ($role->aedit == '1') checked @endif @endisset id="flexCheckChecked" >
         <label class="form-check-label" for="flexCheckChecked">
        Edit
         </label>
       </div>
       <div class="form-check">
-        <input class="" type="checkbox" value="Delete"name='api[]' id="flexCheckChecked" 
-        @isset($role)
-        @foreach ($role->api as $item)
-          @if ($item === 'Delete')
-            checked
-          @endif
-        @endforeach
-      @endisset>
+        <input class="" type="checkbox" value="1" name='adelete' @isset($role)@if ($role->adelete == '1') checked @endif @endisset id="flexCheckChecked" >
         <label class="form-check-label" for="flexCheckChecked">
           Delete
         </label>
       </div>
       
-        @error('responseformat')
-        <small style="color: rgba(255, 0, 0, 0.626)">{{ $message }}</small>
-        @enderror
+    
     </div>
 </div>
 

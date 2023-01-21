@@ -38,6 +38,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/userEdit/{id}', [UserController::class, 'userEdit'])->name('userEdit');
     Route::post('/userStore', [UserController::class, 'userStore'])->name('userStore');
     Route::patch('/userUpdate/{id}', [UserController::class, 'userUpdate'])->name('userUpdate');
+    Route::delete('/userDelete/{id}', [UserController::class, 'userDelete'])->name('userDelete');
     Route::resource('/module', ModuleController::class);
     Route::resource('/hosting', HostingController::class);
     Route::resource('/api', ApiController::class);

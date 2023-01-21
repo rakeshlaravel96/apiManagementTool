@@ -4,24 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use App\Models\User;
+use GuzzleHttp\RedirectMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Gate;
 class UserController extends Controller
 {
     public function userList(){
+
+        if (Gate::denies('super-admin')) {
+            return 'You are not authorized to access this page';
+        }
+
         $users = User::orderBy('name', 'asc')->whereNot('name', 'admin')->get();
         return view('admin.user.list')->with('users', $users);
     }
 
     public function usercreate(){
-
-        $roles = Role::orderBy('name', 'asc')->get();
+        if (Gate::denies('super-admin')) {
+            return 'You are not authorized to access this page';
+        }
+        $roles = Role::whereNot('name', 'super admin')->orderBy('name', 'asc')->get();
         return view('admin.user.create')->with('roles', $roles);
     }
 
 
     public function userStore(Request $request){
+
+        if (Gate::denies('super-admin')) {
+            return 'You are not authorized to access this page';
+        }
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
@@ -47,14 +59,20 @@ class UserController extends Controller
 
 
     public function userEdit($id){
+
+        if (Gate::denies('super-admin')) {
+            return 'You are not authorized to access this page';
+        }
         $user = User::find($id);
-        $roles = Role::orderBy('name', 'asc')->get();
+        $roles = Role::whereNot('name', 'super admin')->orderBy('name', 'asc')->get();
         return view('admin.user.edit')->with('user', $user)->with('roles', $roles);
     }
 
 
     public function userUpdate(Request $request, $id){
-
+        if (Gate::denies('super-admin')) {
+            return 'You are not authorized to access this page';
+        }
         $user = User::find($id);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -77,6 +95,18 @@ class UserController extends Controller
 
         return redirect()->route('userList')->with('success', 'User Updated Successfully');
     }
+
+
+    public function userDelete($id){
+
+        if (Gate::denies('super-admin')) {
+            return 'You are not authorized to access this page';
+        }
+        $user = User::find($id);
+        $user->ddelete();
+        return redirect()->route('userList')->with('success', 'User Updated Successfully');
+    }
+
 
 
 

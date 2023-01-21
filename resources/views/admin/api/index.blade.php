@@ -10,8 +10,10 @@
             <h5 class="text-primary">API</h5>
           
            <div>
+            @can('api-create')
             <a href="{{route('api.create')}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Add Api </a> 
-        </div>
+            @endcan
+          </div>
        
         </div>
         </div>
@@ -42,26 +44,32 @@
 
                     <td>
                         {{$item->developedby}}
-                         </td>
-
-
-                       
-                       
-                    
+                        </td>
                     <td>
+                      @can('api-view')
+                        
+                     
                       <a href="{{route('api.show', $item->id)}}" class="btn btn-success btn-icon-split btn-sm">
                         <span class="icon text-white-50">
                            <i class="fas fa-pen"></i>
                         </span>
                         <span class="text">view</span>
                       </a>
+                      @endcan
+
+
+                      @can('api-edit')
+                        
+                     
                       <a href="{{route('api.edit', $item->id)}}" class="btn btn-primary btn-icon-split btn-sm">
                         <span class="icon text-white-50">
                            <i class="fas fa-pen"></i>
                         </span>
                         <span class="text">Edit</span>
                       </a>
-                   
+                      @endcan
+                      @can('api-delete')
+
                      <button type="button" data-toggle="modal" data-target="#delted-modal">
 
                        <span class="text btn btn-danger btn-sm btn-icon-split">Delete</span>
@@ -86,6 +94,7 @@
                      </div>
                    </div>
                  </div>
+                 @endcan
                 </td>
 
 

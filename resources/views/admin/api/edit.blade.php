@@ -377,8 +377,8 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="apiresponse">Api Response</label>
-                <textarea name="apiresponse" class="form-control ckeditor"
-                cols="10" rows="10">{{ isset($api) ? $api->apiresponse : old('apiresponse') }}</textarea>
+                <input type="text" class="form-control"  name="name"  value="{{ isset($api) ? $api->apiresponse : old('apiresponse') }}">
+              
               
                 @error('apiresponse')
                 <small style="color: rgba(255, 0, 0, 0.626)">{{ $message }}</small>
@@ -387,15 +387,16 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="casevalidation">Use case-Validation & Condition </label>
-                <textarea name="casevalidation" class="form-control ckeditor"
-                cols="10" rows="10">{{ isset($api) ? $api->casevalidation : old('casevalidation') }}</textarea>
+                <label for="failresponse"> Fail response</label>
+                <input type="text" class="form-control"  name="name"  value="{{ isset($api) ? $api->failresponse : old('failresponse') }}">
+                
               
-                @error('casevalidation')
+                @error('failresponse')
                 <small style="color: rgba(255, 0, 0, 0.626)">{{ $message }}</small>
                 @enderror
             </div>
         </div>
+      
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -424,13 +425,14 @@
     </div>
 
     <div class="row">
+        
         <div class="col-md-6">
             <div class="form-group">
-                <label for="failresponse"> Fail response</label>
-                <textarea name="failresponse" class="form-control ckeditor"
-                cols="10" rows="10">{{ isset($api) ? $api->failresponse : old('failresponse') }}</textarea>
+                <label for="casevalidation">Use case-Validation & Condition </label>
+                <textarea name="casevalidation" class="form-control ckeditor"
+                cols="10" rows="10">{{ isset($api) ? $api->casevalidation : old('casevalidation') }}</textarea>
               
-                @error('fail-response')
+                @error('casevalidation')
                 <small style="color: rgba(255, 0, 0, 0.626)">{{ $message }}</small>
                 @enderror
             </div>
@@ -725,7 +727,6 @@ function addInputSuccess() {
      sflex.appendChild(sdescription);
       sflex.appendChild(sbtn);
 }
-
 addBtnSuccess.addEventListener('click', addInputSuccess);
 </script>
 

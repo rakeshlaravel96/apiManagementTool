@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Module;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreModuleRequest;
 use App\Http\Requests\UpdateModuleRequest;
 
@@ -15,6 +16,13 @@ class ModuleController extends Controller
      */
     public function index()
     {
+
+         if(Gate::denies('module-view')){
+            return 'You are not authorized to access this page';
+         }
+
+        
+          
         $modules = Module::latest()->get();
 
         return view('admin.module.index')->with('modules', $modules);
@@ -26,7 +34,10 @@ class ModuleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {    
+        if (Gate::denies('module-create')) {
+            return 'You are not authorized to access this page';
+        }
         return view('admin.module.create');
     }
 
@@ -37,7 +48,11 @@ class ModuleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreModuleRequest $request)
-    {
+    {  
+        if (Gate::denies('module-create')) {
+            return 'You are not authorized to access this page';
+        }
+
         $data = [
             'name' => $request->name
         ];
@@ -64,7 +79,9 @@ class ModuleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Module $module)
-    {
+    {     if (Gate::denies('module-edit')) {
+        return 'You are not authorized to access this page';
+    }
         return view('admin.module.create')->with('module', $module);
     }
 
@@ -77,11 +94,12 @@ class ModuleController extends Controller
      */
     public function update(UpdateModuleRequest $request, Module $module)
     {
-        
+        if (Gate::denies('module-edit')) {
+            return 'You are not authorized to access this page';
+        }
         $data = [
             'name' => $request->name
         ];
-
         $module->update($data);
 
         return redirect()->route('module.index')->with('success', 'Module Updated Successfully');
@@ -94,7 +112,11 @@ class ModuleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Module $module)
-    {
+    {   
+
+        if (Gate::denies('module-delete')) {
+            return 'You are not authorized to access this page';
+        }
         $module->delete();
 
         return redirect()->route('module.index')->with('success', 'Module Deleted Successfully');

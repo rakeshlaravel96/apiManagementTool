@@ -11,17 +11,26 @@ class Role extends Model
 
     protected $fillable = [
         'name',
-        'api',
-        'module',
-        'hosting'
-    ];
+        'mview',
+        'mviewAll',
+        'mcreate',
+        'medit',
+        'mdelete',
+        'hview',
+        'hviewAll',
+        'hcreate',
+        'hedit',
+        'hdelete',
+        'aview',
+        'aviewAll',
+        'acreate',
+        'aedit',
+        'adelete',
+
+        ];
 
 
-    protected $casts = [
-        'api'=> 'array',
-        'module'=> 'array',
-        'hosting'=> 'array'
-    ];
+ 
 
     public function users()
     {

@@ -10,12 +10,13 @@ class Comment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'user_id',
         'comment',
         'api_id'
     ];
 
-    public function comments(){
-        return $this->hasMany(Comment::class)->orderByDesc('id');
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

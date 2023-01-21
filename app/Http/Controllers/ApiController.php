@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Api;
 use App\Models\Apirecord;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Error;
 use App\Models\Header;
 use App\Models\Hosting;
@@ -22,7 +23,11 @@ class ApiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        if(Gate::denies('api-view')){
+            return 'You are not authorized to access this page';
+         }
+
         $allapis = Api::latest()->get();
         return view('admin.api.index')->with('apis', $allapis);
     }
@@ -34,6 +39,10 @@ class ApiController extends Controller
      */
     public function create()
     {
+        
+        if(Gate::denies('api-create')){
+            return 'You are not authorized to access this page';
+         }
 
         $modules = Module::orderBy('name', 'asc')->get();
         $submodules = Submodule::orderBy('name', 'asc')->get();
@@ -49,7 +58,9 @@ class ApiController extends Controller
      */
     public function store(Request $request)
     {
-     
+        if(Gate::denies('api-create')){
+            return 'You are not authorized to access this page';
+         }
 
         $request->validate([
             'module_id' => 'required',
@@ -154,93 +165,9 @@ class ApiController extends Controller
 
         ];
 
-    
 
         $api = Api::create($data);
 
-   
-
-    //     if($request->hfield){
-    //         $hfield = $request->hfield;
-    //         $htype = $request->htype;
-    //         $hdescription = $request->hdescription;
-    
-    
-    
-    //         for ($i=0 ; $i<count($hfield) ; $i++) {
-    //             $dataheader = [
-    //                 'api_id'=> $api->id,
-    //                 'field' => $hfield[$i],
-    //                 'type' => $htype[$i],
-    //                 'description' => $hdescription[$i],
-    //             ];
-    
-    //             Header::create($dataheader);
-    //         }
-    //     }
-
-       
-    //     if($request->pfield){
-    //     $pfield = $request->pfield;
-    //     $ptype = $request->ptype;
-    //     $pdescription = $request->pdescription;
-
-
-
-    //     for ($i=0 ; $i<count($pfield) ; $i++) {
-    //         $dataheader = [
-    //             'api_id'=> $api->id,
-    //             'field' => $pfield[$i],
-    //             'type' => $ptype[$i],
-    //             'description' => $pdescription[$i],
-    //         ];
-
-    //         Parameter::create($dataheader);
-    //     }
-
-    // }
-        
-
-
-    // if($request->sfield){
-    //     $sfield = $request->sfield;
-    //     $stype = $request->stype;
-    //     $sdescription = $request->sdescription;
-
-
-
-    //     for ($i=0 ; $i<count($sfield) ; $i++) {
-    //         $dataheader = [
-    //             'api_id'=> $api->id,
-    //             'field' => $sfield[$i],
-    //             'type' => $stype[$i],
-    //             'description' => $sdescription[$i],
-    //         ];
-
-    //         Success::create($dataheader);
-    //     }
-
-    // }
-
-
-    //     if($request->efield){        
-    //     $efield = $request->efield;
-    //     $etype = $request->etype;
-    //     $edescription = $request->edescription;
-
-
-
-    //     for ($i=0 ; $i<count($efield) ; $i++) {
-    //         $dataheader = [
-    //             'api_id'=> $api->id,
-    //             'field' => $efield[$i],
-    //             'type' => $etype[$i],
-    //             'description' => $edescription[$i],
-    //         ];
-
-    //         Error::create($dataheader);
-    //     }
-    // }
 
 
         return redirect()->route('api.index')->with('success', 'Api Created Successfully');
@@ -255,7 +182,10 @@ class ApiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Api $api)
-    {
+    {    
+        if(Gate::denies('api-view')){
+            return 'You are not authorized to access this page';
+         }
         return view('admin.api.show')->with('api', $api);
     }
 
@@ -266,7 +196,12 @@ class ApiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Api $api)
-    {    $modules = Module::orderBy('name', 'asc')->get();
+    { 
+        if (Gate::denies('api-edit')) {
+            return 'You are not authorized to access this page';
+        }
+        
+        $modules = Module::orderBy('name', 'asc')->get();
         $submodules = Submodule::orderBy('name', 'asc')->get();
         $hostings = Hosting::orderBy('name', 'asc')->get();
         return view('admin.api.edit')->with('api', $api)->with('modules', $modules)->with('submodules', $submodules)->with('hostings', $hostings);;
@@ -281,6 +216,9 @@ class ApiController extends Controller
      */
     public function update(Request $request, Api $api)
     {       
+        if (Gate::denies('api-edit')) {
+            return 'You are not authorized to access this page';
+        }
         $request->validate([
             'module_id' => 'required',
         
@@ -444,6 +382,10 @@ class ApiController extends Controller
      */
     public function destroy(Api $api)
     {  
+        if (Gate::denies('module-delete')) {
+            return 'You are not authorized to access this page';
+        }
+
         $api->delete();
         return redirect()->route('api.index')->with('success', 'Api Deleted Successfully');
 

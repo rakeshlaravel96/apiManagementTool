@@ -627,50 +627,83 @@ body {
   font-size: 2rem;
 }
 .commentmodel-container {
-  max-width: 80rem;
-  margin: 0 auto;
+  max-width: 120rem;
+  border-radius: 1rem;
+  margin: 2rem auto;
   width: 100%;
   padding: 2rem 0;
+  height: calc(100% - 4rem);
+}
+.commentmodel-container .comment-box {
+  margin: 0 auto;
+  width: 73rem;
+  height: 16rem;
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.commentmodel-container .comment-box .name {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #5357B6;
 }
 .commentmodel-container .comment-box form {
   display: flex;
-  align-items: flex-end;
-  flex-direction: column;
+  align-items: flex-start;
   gap: 0.5rem;
 }
 .commentmodel-container .comment-box form textarea {
-  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  height: 10rem;
   padding: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 1px solid #E9EBF0;
+  border-radius: 8px;
 }
 .commentmodel-container .comment-box form .btn {
-  font-size: 11px;
-  font-weight: 600;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
   min-width: 60px;
-  padding: 0.3rem 0.5rem;
+  padding: 0.5rem 0.8rem;
   text-align: center;
-  border-radius: 3px;
+  background: #5357B6;
+  border-radius: 8px;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   font-family: sans-serif;
   color: #fff;
   text-transform: uppercase;
-  background-color: rgba(28, 188, 252, 0.7725490196);
 }
 .commentmodel-container .comment-list {
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #fff;
+  margin: 0 auto;
+  width: 73rem;
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.commentmodel-container .comment-list .name-time {
   display: flex;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  flex-direction: column;
-  gap: 0.5rem;
-  border-radius: 5px;
+  gap: 1rem;
+}
+.commentmodel-container .comment-list .name-time h3 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #67727E;
 }
 .commentmodel-container .comment-list .name {
-  color: rgba(28, 188, 252, 0.7725490196);
-  font-size: 2rem;
+  font-style: normal;
   font-weight: 500;
+  font-size: 16px;
+  color: #5357B6;
 }
 .commentmodel-container .comment-list .comment-text {
-  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #67727E;
 }/*# sourceMappingURL=main.css.map */

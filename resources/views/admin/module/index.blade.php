@@ -3,6 +3,8 @@
 @section('admin')
 
 
+@can('module-create')
+  
 
 <div class="card col-lg-6 mb-4">
 
@@ -32,7 +34,7 @@
 
   </div>
 </div>
-
+@endcan
 <div class="row">
     <div class="col-lg-12">
       <div class="card mb-4">
@@ -41,8 +43,10 @@
             <h5 class="text-primary">Module</h5>
           
            <div>
+            @can('module-create')
             <a href="{{route('module.create')}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Add Module </a> 
-        </div>
+            @endcan
+          </div>
        
         </div>
         </div>
@@ -65,13 +69,14 @@
                    {{$item->name}}
                     </td>
                     <td>
+                      @can('module-create')
                         <a href="{{route('submodule.create', $item->id)}}" class="btn btn-primary btn-icon-split btn-sm">
                             <span class="icon text-white-50">
                                <i class="fas fa-pen"></i>
                             </span>
                             <span class="text">Submodule create</span>
                           </a>
-
+                        @endcan
                           <a href="{{route('submodule.index', $item->id)}}" class="btn btn-primary btn-icon-split btn-sm">
                             <span class="icon text-white-50">
                                <i class="fas fa-pen"></i>
@@ -83,17 +88,24 @@
                        
                     </td>
                     <td>
+                      @can('module-edit')
+                        
+                     
                         <a href="{{route('module.edit', $item->id)}}" class="btn btn-primary btn-icon-split btn-sm">
                             <span class="icon text-white-50">
                                <i class="fas fa-pen"></i>
                             </span>
                             <span class="text">Edit</span>
                           </a>
-                   
+                          @endcan
+
+                          @can('module-delete')
+                      
                      <button type="button" data-toggle="modal" data-target="#delted-modal">
 
                        <span class="text btn btn-danger btn-sm btn-icon-split">Delete</span>
                  </button>
+                 
                  <div class="modal fade" id="delted-modal" tabindex="-1" role="dialog" aria-labelledby="delted-modal-Label-{{$key + 1}}" aria-hidden="true">
                    <div class="modal-dialog" role="document">
                      <div class="modal-content">
@@ -116,6 +128,7 @@
                      </div>
                    </div>
                  </div>
+                 @endcan
                 </td>
 
 

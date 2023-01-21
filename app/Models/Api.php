@@ -62,6 +62,10 @@ class Api extends Model
         return $this->belongsTo(Hosting::class);
     }
 
+    public function comments(){
+        return $this->hasMany(Comment::class)->orderByDesc('id');
+    }
+
 
 
 }
