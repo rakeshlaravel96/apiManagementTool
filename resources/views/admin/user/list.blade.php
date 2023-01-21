@@ -71,7 +71,7 @@
                        </div> --}}
                        <div class="modal-footer">
                          <button type="button"  data-dismiss="modal"> <span class="btn btn-dark btn-sm"> Close</span></button>
-                         <form action="" method="post">
+                         <form action="{{route('userDelete', $item->id)}}" method="post">
                            @csrf
                            @method('DELETE')
                            <button type="submit">

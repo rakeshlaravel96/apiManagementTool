@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Api;
 use App\Models\Apirecord;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Error;
 use App\Models\Header;
 use App\Models\Hosting;
@@ -22,7 +23,11 @@ class ApiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        if(Gate::denies('api-view')){
+            return 'You are not authorized to access this page';
+         }
+
         $allapis = Api::latest()->get();
         return view('admin.api.index')->with('apis', $allapis);
     }
@@ -34,6 +39,10 @@ class ApiController extends Controller
      */
     public function create()
     {
+        
+        if(Gate::denies('api-create')){
+            return 'You are not authorized to access this page';
+         }
 
         $modules = Module::orderBy('name', 'asc')->get();
         $submodules = Submodule::orderBy('name', 'asc')->get();
@@ -49,6 +58,9 @@ class ApiController extends Controller
      */
     public function store(Request $request)
     {
+        if(Gate::denies('api-create')){
+            return 'You are not authorized to access this page';
+         }
 
         $request->validate([
             'module_id' => 'required',
@@ -87,11 +99,14 @@ class ApiController extends Controller
             $pfield = $request->pfield;
             $ptype = $request->ptype;
             $pdescription = $request->pdescription;
+            $pmandatory = $request->pmandatory;
+
             $parameter = array();
 
             for ($i=0 ; $i<count($pfield) ; $i++) {
                  
                 $parameter[$i]["field"]= $pfield[$i];
+                $parameter[$i]["mandatory"]= $pmandatory[$i];
                $parameter[$i]["type"]= $ptype[$i];
                $parameter[$i]["description"]= $pdescription[$i];
       
@@ -150,93 +165,9 @@ class ApiController extends Controller
 
         ];
 
-    
 
         $api = Api::create($data);
 
-   
-
-    //     if($request->hfield){
-    //         $hfield = $request->hfield;
-    //         $htype = $request->htype;
-    //         $hdescription = $request->hdescription;
-    
-    
-    
-    //         for ($i=0 ; $i<count($hfield) ; $i++) {
-    //             $dataheader = [
-    //                 'api_id'=> $api->id,
-    //                 'field' => $hfield[$i],
-    //                 'type' => $htype[$i],
-    //                 'description' => $hdescription[$i],
-    //             ];
-    
-    //             Header::create($dataheader);
-    //         }
-    //     }
-
-       
-    //     if($request->pfield){
-    //     $pfield = $request->pfield;
-    //     $ptype = $request->ptype;
-    //     $pdescription = $request->pdescription;
-
-
-
-    //     for ($i=0 ; $i<count($pfield) ; $i++) {
-    //         $dataheader = [
-    //             'api_id'=> $api->id,
-    //             'field' => $pfield[$i],
-    //             'type' => $ptype[$i],
-    //             'description' => $pdescription[$i],
-    //         ];
-
-    //         Parameter::create($dataheader);
-    //     }
-
-    // }
-        
-
-
-    // if($request->sfield){
-    //     $sfield = $request->sfield;
-    //     $stype = $request->stype;
-    //     $sdescription = $request->sdescription;
-
-
-
-    //     for ($i=0 ; $i<count($sfield) ; $i++) {
-    //         $dataheader = [
-    //             'api_id'=> $api->id,
-    //             'field' => $sfield[$i],
-    //             'type' => $stype[$i],
-    //             'description' => $sdescription[$i],
-    //         ];
-
-    //         Success::create($dataheader);
-    //     }
-
-    // }
-
-
-    //     if($request->efield){        
-    //     $efield = $request->efield;
-    //     $etype = $request->etype;
-    //     $edescription = $request->edescription;
-
-
-
-    //     for ($i=0 ; $i<count($efield) ; $i++) {
-    //         $dataheader = [
-    //             'api_id'=> $api->id,
-    //             'field' => $efield[$i],
-    //             'type' => $etype[$i],
-    //             'description' => $edescription[$i],
-    //         ];
-
-    //         Error::create($dataheader);
-    //     }
-    // }
 
 
         return redirect()->route('api.index')->with('success', 'Api Created Successfully');
@@ -251,7 +182,10 @@ class ApiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Api $api)
-    {
+    {    
+        if(Gate::denies('api-view')){
+            return 'You are not authorized to access this page';
+         }
         return view('admin.api.show')->with('api', $api);
     }
 
@@ -262,7 +196,12 @@ class ApiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Api $api)
-    {    $modules = Module::orderBy('name', 'asc')->get();
+    { 
+        if (Gate::denies('api-edit')) {
+            return 'You are not authorized to access this page';
+        }
+        
+        $modules = Module::orderBy('name', 'asc')->get();
         $submodules = Submodule::orderBy('name', 'asc')->get();
         $hostings = Hosting::orderBy('name', 'asc')->get();
         return view('admin.api.edit')->with('api', $api)->with('modules', $modules)->with('submodules', $submodules)->with('hostings', $hostings);;
@@ -277,6 +216,9 @@ class ApiController extends Controller
      */
     public function update(Request $request, Api $api)
     {       
+        if (Gate::denies('api-edit')) {
+            return 'You are not authorized to access this page';
+        }
         $request->validate([
             'module_id' => 'required',
         
@@ -295,62 +237,46 @@ class ApiController extends Controller
         ]);
 
 
-        // $headerfield = Header::where('api_id', $api->id)->pluck('field');
-        // $headertype = Header::where('api_id', $api->id)->pluck('type');
-        // $headerdescription = Header::where('api_id', $api->id)->pluck('description');
-        // $parameterfield = Parameter::where('api_id', $api->id)->pluck('field');
-        // $parametertype = Parameter::where('api_id', $api->id)->pluck('type');
-        // $parameterdescription = Parameter::where('api_id', $api->id)->pluck('description');
-        // $successfield = Success::where('api_id', $api->id)->pluck('field');
-        // $successtype = Success::where('api_id', $api->id)->pluck('type');
-        // $successdescription = Success::where('api_id', $api->id)->pluck('description');
-        // $errorfield = Error::where('api_id', $api->id)->pluck('field');
-        // $errortype = Error::where('api_id', $api->id)->pluck('type');
-        // $errordescription = Error::where('api_id', $api->id)->pluck('description');
-
 
        
+       if(!$api->submodule) {
+        $submod = '';
+       }else{
+        $submod = $api->submodule->name;
+       }
 
-        // $recorddata = [
-        //     'module' => $api->module->name,
-        //     'submodule' => $api->submodule->name,
-        //     'hosting' => $api->hosting->name,
+        $recorddata = [
+            'module' => $api->module->name,
+            'submodule' => $submod,
+            'hosting' => $api->hosting->name,
 
-        //     'name' => $api->name,
-        //     'endpoint' => $api->endpoint,
-        //     'method' => $api->method,
-        //     'responseformat' => $api->responseformat,
+            'name' => $api->name,
+            'endpoint' => $api->endpoint,
+            'method' => $api->method,
+            'responseformat' => $api->responseformat,
 
-        //     'apiresponse' => $api->apiresponse,
-        //     'apipurpose' => $api->apipurpose,
-        //     'casevalidation' => $api->casevalidation,
-        //     'successresponse' => $api->successresponse,
-        //     'errorresponse' => $api->errorresponse,
-        //     'failresponse' => $api->failresponse,
-        //     'developedby' => $api->developedby,
-        //     'optional' => $api->optional,
-        //     'updatedby' => $api->updatedby,
-        //     'hfield'=>json_decode($headerfield) ,
-        //     'htype'=> json_decode($headertype),
-        //     'hdescription'=> json_decode($headerdescription),
-        //     'pfield'=> json_decode($parameterfield),
-        //     'ptype'=> json_decode($parametertype),
-        //     'pdescription'=> json_decode($parameterdescription),
-        //     'sfield'=> json_decode($successfield),
-        //     'stype'=> json_decode($successtype),
-        //     'sdescription'=> json_decode($successdescription),
-        //     'efield'=> json_decode($errorfield),
-        //     'etype'=> json_decode($errortype),
-        //     'edescription'=> json_decode($errordescription),
-        //     'api_id' => $api->id,
-        //     'updatedby' =>$api->updatedby,
+            'apiresponse' => $api->apiresponse,
+            'apipurpose' => $api->apipurpose,
+            'casevalidation' => $api->casevalidation,
+            'successresponse' => $api->successresponse,
+            'errorresponse' => $api->errorresponse,
+            'failresponse' => $api->failresponse,
+            'developedby' => $api->developedby,
+            'optional' => $api->optional,
+            'updatedby' => $api->updatedby,
+            'header'=> $api->header,
+            'parameter'=>$api->parameter,
+            'success'=>$api->success,
+            'error'=>$api->error,
+            'api_id' => $api->id,
+            'updatedby' =>$api->updatedby,
             
-        // ];
+        ];
 
      
 
 
-        // Apirecord::create($recorddata);
+        Apirecord::create($recorddata);
 
 
 
@@ -375,18 +301,19 @@ class ApiController extends Controller
         $pfield = $request->pfield;
         $ptype = $request->ptype;
         $pdescription = $request->pdescription;
+        $pmandatory = $request->pmandatory;
 
         $parameter = array();
 
         for ($i=0 ; $i<count($pfield) ; $i++) {
              
             $parameter[$i]["field"]= $pfield[$i];
+            $parameter[$i]["mandatory"]= $pmandatory[$i];
            $parameter[$i]["type"]= $ptype[$i];
            $parameter[$i]["description"]= $pdescription[$i];
   
         
           }
-
 
           $sfield = $request->sfield;
           $stype = $request->stype;
@@ -455,6 +382,10 @@ class ApiController extends Controller
      */
     public function destroy(Api $api)
     {  
+        if (Gate::denies('module-delete')) {
+            return 'You are not authorized to access this page';
+        }
+
         $api->delete();
         return redirect()->route('api.index')->with('success', 'Api Deleted Successfully');
 

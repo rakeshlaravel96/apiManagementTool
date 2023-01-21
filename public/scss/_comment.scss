@@ -1,0 +1,136 @@
+.commentmodel{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 110;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(78, 78, 78, 0.555);
+    display: none;
+
+    .commentclose{
+        position: absolute;
+        right: 2rem;
+        top: 2rem;
+        z-index: 101;
+        font-weight: bold;
+        color:#fff;
+        cursor: pointer;
+      
+        font-size: 2rem;
+
+
+    }
+
+    &-container{
+        max-width: 120rem;
+        border-radius: 1rem;
+        margin: 2rem auto;
+        width: 100%;
+        padding: 2rem 0;
+        
+        height: calc( 100% - 4rem);
+
+        .comment-box{ 
+            margin: 0 auto;
+            width: 73rem; 
+            height: 16rem;
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+
+            .name{
+                font-style: normal;
+                font-weight: 500;
+                 font-size: 16px;
+                 color: #5357B6;
+            }
+            
+            form{
+                display: flex;
+                align-items: flex-start;
+            
+                gap: 0.5rem;
+
+                textarea{
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    height: 10rem;
+                    padding: 1rem;
+                    border: 1px solid #E9EBF0;
+                    border-radius: 8px;
+                    
+
+                }
+
+                .btn{
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 12px;
+                    min-width: 60px;
+                    padding:0.5rem 0.8rem;
+                    text-align: center;
+                    background: #5357B6;
+                    border-radius: 8px;
+                    text-shadow: 0 1px 0 rgb(0 0 0 / 10%);
+                    font-family: sans-serif;
+                    color: #fff;
+                 
+                    text-transform: uppercase;
+                  
+                    
+                }
+            }
+            
+        }
+
+        .comment-list{
+            margin: 0 auto;
+            width: 73rem; 
+           
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+
+            .name-time{
+                display: flex;
+                gap: 1rem;
+             
+
+                h3{
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+
+
+                      color: #67727E;
+                }
+            }
+
+            .name{
+                font-style: normal;
+                font-weight: 500;
+                 font-size: 16px;
+                 color: #5357B6;
+            }
+
+            
+
+            .comment-text{
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+
+
+                  color: #67727E;
+            }
+
+        }
+
+
+    }
+
+}

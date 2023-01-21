@@ -14,7 +14,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::orderBy('name', 'asc')->get();
+        $roles = Role::whereNot('name', 'super admin')->orderBy('name', 'asc')->get();
         return view('admin.role.index')->with('roles', $roles);
     }
 
@@ -39,18 +39,28 @@ class RoleController extends Controller
        
         $request->validate([
             'name'=>'required',
-            'api'=>'required',
-            'module'=>'required',
-            'hosting'=>'required'
+            
         ]);
 
 
        
         $data = [
             'name' => $request->name,
-            'api'=> $request->api,
-            'module'=>$request->module,
-            'hosting'=>$request->hosting
+            'mview' => $request->mview,
+            'mviewAll' => $request->mviewAll,
+            'mcreate' => $request->mcreate,
+            'medit' => $request->medit,
+            'mdelete' => $request->mdelete,
+            'hview' => $request->hview,
+            'hviewAll' => $request->hviewAll,
+            'hcreate' => $request->hcreate,
+            'hedit' => $request->hedit,
+            'hdelete' => $request->hdelete,
+            'aview' => $request->aview,
+            'aviewAll' => $request->aviewAll,
+            'acreate' => $request->acreate,
+            'aedit' => $request->aedit,
+            'adelete' => $request->adelete,
         ];
 
       
@@ -95,15 +105,26 @@ class RoleController extends Controller
       
         $request->validate([
             'name'=>'required',
-            'api'=>'required',
-            'module'=>'required',
-            'hosting'=>'required'
+         
         ]);
         $data = [
             'name' => $request->name,
-            'api'=> $request->api,
-            'module'=>$request->module,
-            'hosting'=>$request->hosting
+            'mview' => $request->mview,
+            'mviewAll' => $request->mviewAll,
+            'mcreate' => $request->mcreate,
+            'medit' => $request->medit,
+            'mdelete' => $request->mdelete,
+            'hview' => $request->hview,
+            'hviewAll' => $request->hviewAll,
+            'hcreate' => $request->hcreate,
+            'hedit' => $request->hedit,
+            'hdelete' => $request->hdelete,
+            'aview' => $request->aview,
+            'aviewAll' => $request->aviewAll,
+            'acreate' => $request->acreate,
+            'aedit' => $request->aedit,
+            'adelete' => $request->adelete,
+            
         ];
 
       

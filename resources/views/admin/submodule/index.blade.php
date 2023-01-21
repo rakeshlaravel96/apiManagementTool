@@ -8,10 +8,12 @@
         <div class="card-header py-3">
          <div class="d-flex justify-content-between align-items-center" >
             <h5 class="text-primary" >Sub Modules of {{$module->name}}</h5>
-          
+        
            <div>
+            @can('module-create')
             <a href="{{route('submodule.create', $module->id)}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Add sub Module </a> 
-        </div>
+            @endcan
+          </div>
        
         </div>
         </div>
@@ -33,6 +35,8 @@
                     <td>
                    {{$item->name}}
                     </td>
+                    @can('module-edit')
+                      
                     <td>
                         <a href="{{route('submodule.edit', [$item->module_id ,$item->id])}}" class="btn btn-primary btn-icon-split btn-sm">
                             <span class="icon text-white-50">
@@ -41,6 +45,10 @@
                             <span class="text">Edit</span>
                           </a>
                     </td>
+                    @endcan
+
+
+                    @can('module-delete')
                     <td>
                       
                    
@@ -71,7 +79,7 @@
                    </div>
                  </div>
                 </td>
-
+                @endcan
 
                  </tr>
                     

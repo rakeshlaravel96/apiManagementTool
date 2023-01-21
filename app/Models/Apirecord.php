@@ -29,18 +29,11 @@ class Apirecord extends Model
         'developedby',
         'optional',
         'updatedby',
-        'hfield',
-        'htype',
-        'hdescription',
-        'pfield',
-        'ptype',
-        'pdescription',
-        'sfield',
-        'stype',
-        'sdescription',
-        'efield',
-        'etype',
-        'edescription'
+        'header',
+         'parameter',
+         'success', 
+         'error'
+       
 
 
     ];
@@ -54,19 +47,10 @@ class Apirecord extends Model
 
 
     protected $casts = [
-        'hfield'=> 'array',
-        'htype'=> 'array',
-        'hdescription'=> 'array',
-        'pfield'=> 'array',
-        'ptype'=> 'array',
-        'pdescription'=> 'array',
-        'sfield'=> 'array',
-        'stype'=> 'array',
-        'sdescription'=> 'array',
-        'efield'=> 'array',
-        'etype'=> 'array',
-        'edescription'=> 'array'
+        'header'=> 'array',
+        'parameter'=> 'array',
+        'success'=> 'array',
+        'error'=> 'array',
     ];
-
 
 }

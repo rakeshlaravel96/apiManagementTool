@@ -27,8 +27,12 @@
                       <ul  class="collapse show"  id="dashboard"
                         data-parent="#sidebar-menu">
                         <div class="sub-menu">
+                          
 
-
+                       
+                          @can('super-admin')
+                            
+                        
                           <li  class="has-sub" >
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pageetai"
                               aria-expanded="false" aria-controls="pageetai">
@@ -38,10 +42,10 @@
                               <div class="sub-menu">
 
                                 <li >
-                                  <a href="{{route('userList')}}">Index</a>
+                                  <a href="{{route('userList')}}">All User</a>
                                 </li>
                                 <li >
-                                  <a href="{{route('usercreate')}}">Create</a>
+                                  <a href="{{route('usercreate')}}">Add User</a>
                                 </li>
                               
 
@@ -60,10 +64,10 @@
                               <div class="sub-menu">
 
                                 <li >
-                                  <a href="{{route('role.index')}}">Index</a>
+                                  <a href="{{route('role.index')}}">Roles List</a>
                                 </li>
                                 <li >
-                                  <a href="{{route('role.create')}}">Create</a>
+                                  <a href="{{route('role.create')}}">Add Role</a>
                                 </li>
                               
 
@@ -73,8 +77,12 @@
                             </ul>
                           </li>
 
-
+                          @endcan
 {{-- //start --}}
+
+                    
+                         
+                     
                           <li  class="has-sub" >
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pagedetail"
                               aria-expanded="false" aria-controls="pagedetail">
@@ -84,7 +92,7 @@
                               <div class="sub-menu">
 
                                 <li >
-                                  <a href="{{route('module.index')}}">Index</a>
+                                  <a href="{{route('module.index')}}">Module List</a>
                                 </li>
                                
 
@@ -93,7 +101,7 @@
                               </div>
                             </ul>
                           </li>
-
+                         
                           <li  class="has-sub" >
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pagedetai"
                               aria-expanded="false" aria-controls="pagedetai">
@@ -103,7 +111,7 @@
                               <div class="sub-menu">
 
                                 <li >
-                                  <a href="{{route('hosting.index')}}">Index</a>
+                                  <a href="{{route('hosting.index')}}">Hosting List</a>
                                 </li>
                               
 
@@ -123,10 +131,10 @@
                               <div class="sub-menu">
 
                                 <li >
-                                  <a href="{{route('api.index')}}">Index</a>
+                                  <a href="{{route('api.index')}}">APi List</a>
                                 </li>
                                 <li >
-                                  <a href="{{route('api.create')}}">Create</a>
+                                  <a href="{{route('api.create')}}">Add Api</a>
                                 </li>
 
                               </div>

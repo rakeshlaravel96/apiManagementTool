@@ -1,121 +1,73 @@
-
-.contain{
-    display: flex;
+.logmodel{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
     width: 100%;
+    height: 100vh;
+    background-color: rgba(78, 78, 78, 0.555);
+    display: none;
+
+    .close{
+        position: absolute;
+        right: 2rem;
+        top: 2rem;
+        z-index: 101;
+        font-weight: bold;
+        color:#fff;
+        cursor: pointer;
+        font-size: 2rem;
+    }
 
 
 
-    .main{
-        width: calc(100% - 30rem );
-        margin-left: 30rem;
-        padding: 2rem 3rem;
+    .logmodel-container{
+        max-width: 120rem;
+        margin: 0 auto;
+        width: 100%;
+        padding: 1rem;
+        height: calc(100vh);
+        overflow-y: scroll;
 
-
-        .basic-info{
-            
-            .title{
-                h1{
-                    font-weight: 700; margin-bottom: 1rem;
-                }
-                h4{
-                    font-weight: 600;
-                    font-size: 1.5rem;
-                    
-                }
-            }
-
-           
-        }
-        .intro{
-
-            width: 100%;
-            border-bottom: 1px solid #5f636815;;
-            margin-top: 5rem;
-            padding-bottom: 1rem;
-            h4{
-                font-weight: 700;
-                font-size: 1.6rem;
-                
-            }
-
-            p{
-                font-weight: 400;
-                font-size: 15px;
-                color: #5f6368;
-            }
-        }
-
-        .basic-in{
-
-            width: 100%;
-            border-bottom: 1px solid #5f636815;;
-            margin-top: 5rem;
-            padding-bottom: 1rem;
-            h4{
-                font-weight: 700;
-                font-size: 1.6rem;
-                
-            }
-
-            p{
-                font-weight: 400;
-                font-size: 15px;
-                color: #5f6368;
-            }
-        }
-
-        .custom{
-            
-            width: 100%;
-            border-bottom: 1px solid #5f636815;;
-            margin-top: 5rem;
-            padding-bottom: 5rem;
-            h4{
-                font-weight: 700;
-                font-size: 1.6rem;
-                
-            }
-
-            p{
-                font-weight: 400;
-                font-size: 15px;
-                color: #5f6368;
-            }
-
-        }
-
-
-        .api-detail{
-            margin-top: 3rem;
-           
-
-
-
-            .api-detailed{
+        &::-webkit-scrollbar {
+            width: 2px;
+          }
+        
+          &::-webkit-scrollbar-thumb {
+            background: rgba(202, 202, 202, 0.205); 
+          }
+             .apiDetailMod{
+               flex-direction: column;
+             }
+             .norecord{
+                font-size: 3rem;
+                background-color: white;
+                padding: 2rem;
+                color: #f93838;
+             }
+            .apiDetailModel{
                 display: flex;
-                margin-bottom: 3rem;
-                // padding: 2rem 0;
-              height: 100%;
+                margin-bottom: 2rem;
 
 
                 &.post-api{
-                    background: rgba(73,204,144,.1);
+                    background: #ebfaf3;
                     border: 1px dotted #49cc90;
                     border-radius: 6px;
                 }
 
                 &.delete-api{
-                    background: rgba(249,62,62,.1);
+                    background:#feecec;
                      border: 1px dotted #f93e3e;
                      border-radius: 6px;
                 }
                 &.get-api{
-                    background: rgba(97,175,254,.1);
+                    background: #eff8ff;
                     border: 1px dotted #61affe;
                     border-radius: 6px;
                 }
                 &.put-api{
-                    background: rgba(252,161,48,.1);
+                    background:#fff5eb;
                     border: 1px dotted #fca130;
                     border-radius: 6px;
                 }
@@ -340,7 +292,7 @@
     }
 
 
-  
+ 
+ 
 
 
-}

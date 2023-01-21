@@ -1,7 +1,7 @@
 @extends('admin.body.adminmaster')
 
 @section('admin')
-
+@can('hosting-create')
 <div class="card col-lg-6 mb-4">
   <div class="card-body">
   <form action="{{route('hosting.store')}}" method="post" enctype="multipart/form-data">
@@ -26,7 +26,7 @@
 
   </div>
 </div>
-
+@endcan
 
 <div class="row">
     <div class="col-lg-12">
@@ -34,10 +34,12 @@
         <div class="card-header py-3">
          <div class="d-flex justify-content-between align-items-center" >
             <h5 class="text-primary">Hosting</h5>
-          
+           
            <div>
+            @can('hosting-create')
             <a href="{{route('hosting.create')}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Add hosting </a> 
-        </div>
+            @endcan
+          </div>
        
         </div>
         </div>
@@ -61,7 +63,7 @@
                     </td>
                     <td>
                        
-
+                      @can('hosting-edit')
                         <a href="{{route('hosting.edit', $item->id)}}" class="btn btn-primary btn-icon-split btn-sm">
                             <span class="icon text-white-50">
                                <i class="fas fa-pen"></i>
@@ -69,11 +71,11 @@
                             <span class="text">Edit</span>
                           </a>
                    
-                       
+                       @endcan
                     </td>
                     <td>
                        
-                   
+                      @can('hosting-delete')
                      <button type="button" data-toggle="modal" data-target="#delted-modal">
 
                        <span class="text btn btn-danger btn-sm btn-icon-split">Delete</span>
@@ -101,7 +103,7 @@
                    </div>
                  </div>
                 </td>
-
+                @endcan
 
                  </tr>
                     

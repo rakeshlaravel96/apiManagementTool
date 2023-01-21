@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hosting;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreHostingRequest;
 use App\Http\Requests\UpdateHostingRequest;
 
@@ -15,6 +16,11 @@ class HostingController extends Controller
      */
     public function index()
     {
+        if(Gate::denies('hosting-view')){
+            return 'You are not authorized to access this page';
+         }
+
+
         $hostings = Hosting::latest()->get();
 
         return view('admin.hosting.index')->with('hostings', $hostings);
@@ -27,6 +33,10 @@ class HostingController extends Controller
      */
     public function create()
     {
+        if (Gate::denies('hosting-create')) {
+            return 'You are not authorized to access this page';
+        }
+
         return view('admin.hosting.create');
     }
 
@@ -37,7 +47,12 @@ class HostingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreHostingRequest $request)
-    {
+    {   
+
+        if (Gate::denies('hosting-create')) {
+            return 'You are not authorized to access this page';
+        }
+
         $data = [
             'name' => $request->name
         ];
@@ -64,7 +79,11 @@ class HostingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Hosting $hosting)
-    {
+    {  
+        if (Gate::denies('hosting-edit')) {
+            return 'You are not authorized to access this page';
+        }
+
         return view('admin.hosting.create')->with('hosting', $hosting);
     }
 
@@ -76,7 +95,10 @@ class HostingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateHostingRequest $request, Hosting $hosting)
-    {
+    {   
+        if (Gate::denies('hosting-edit')) {
+            return 'You are not authorized to access this page';
+        }
         $data = [
             'name' => $request->name
         ];
@@ -94,6 +116,10 @@ class HostingController extends Controller
      */
     public function destroy(Hosting $hosting)
     {
+        if (Gate::denies('hosting-delete')) {
+            return 'You are not authorized to access this page';
+        }
+
         $hosting->delete();
 
         return redirect()->route('hosting.index')->with('success', 'Hosting Deleted Successfully');
